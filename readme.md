@@ -2,8 +2,9 @@
 
 Copy an image from the screen to a physical paper. Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.
 
-- **App:** https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching
-- **Publish:** https://play.google.com/apps/publish
+**App:** https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching
+
+![Tracing paper app](https://github.com/dodie/tracing-paper-sketching/blob/master/docs/IMG_20190104_204555.jpg "Tracing paper app")
 
 
 ## Build and Development
