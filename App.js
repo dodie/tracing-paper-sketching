@@ -28,14 +28,14 @@ export default class App extends React.Component {
             <Text style={{ color: 'white' }}>Copy an image from the screen to a physical paper. Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.</Text>
 
             <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={ this._openLegal } iconName="md-book" text="Privacy Policy" />
+            <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text="Privacy Policy" />
 
             <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={ this._openLicenses } iconName="md-heart" text="Licenses, Credits" />
+            <ActionButtonWithText onPress={this._openLicenses} iconName="md-heart" text="Licenses, Credits" />
           </View>
 
-          <FloatingToolbar top={ true } left={ true }>
-            <ActionButton onPress={ this._toMain } iconName="md-arrow-back" />
+          <FloatingToolbar top={true} left={true}>
+            <ActionButton onPress={this._toMain} text="back" textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
         </View>
       );
@@ -44,25 +44,25 @@ export default class App extends React.Component {
     if (!image) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <ActionButtonWithText onPress={ this._pickImage } iconName="md-photos" text="PICK AN IMAGE" />
-          <FloatingToolbar top={ true }>
-            <ActionButton onPress={ this._toHelp } iconName="md-help" />
+          <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text="PICK AN IMAGE" />
+          <FloatingToolbar top={true}>
+            <ActionButton onPress={this._toHelp} text="help" iconName="md-help" />
           </FloatingToolbar>
         </View>
       );
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage image={ image } width={ width } height={ height } locked={ locked } />
-          { !locked &&
-          <FloatingToolbar top={ true } left={ true }>
-            <ActionButton onPress={ this._resetImage } iconName="md-arrow-back" />
-          </FloatingToolbar>
+          <TrasformableImage image={image} width={width} height={height} locked={locked} />
+          {!locked &&
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._resetImage} text="back" textPosition="right" iconName="md-arrow-back" />
+            </FloatingToolbar>
           }
           <FloatingToolbar>
-            { !locked && <ActionButton onPress={ this._pickImage } iconName="md-photos" /> }
-            { !locked && <ActionButton onPress={ this._lock } iconName="md-unlock" /> }
-            { locked && <ActionButton onPress={ this._unlock } iconName="md-lock" /> }
+            {!locked && <ActionButton onPress={this._pickImage} text="open" iconName="md-photos" />}
+            {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
+            {locked && <ActionButton onPress={this._unlock} text="unlock" iconName="md-lock" />}
           </FloatingToolbar>
         </View>
       );
