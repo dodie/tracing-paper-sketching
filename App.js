@@ -1,11 +1,14 @@
-import React from 'react';
-import { Button, Image, Text, View, Linking } from 'react-native';
+import React, { Fragment } from 'react';
+import { Text, View, Linking, ActivityIndicator } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
 import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
+import { ToastAndroid } from 'react-native';
+import * as Permissions from 'expo-permissions';
+import Camera from './Camera';
 
 
 export default class App extends React.Component {
@@ -15,10 +18,17 @@ export default class App extends React.Component {
     height: null,
     locked: false,
     help: false,
+    camera: null,
+    photoLoader: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.cameraRef = React.createRef();
+  }
+
   render() {
-    let { image, width, height, locked, help } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader } = this.state;
 
     if (help) {
       return (
@@ -28,41 +38,59 @@ export default class App extends React.Component {
             <Text style={{ color: 'white' }}>Copy an image from the screen to a physical paper. Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.</Text>
 
             <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={ this._openLegal } iconName="md-book" text="Privacy Policy" />
+            <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text="Privacy Policy" />
 
             <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={ this._openLicenses } iconName="md-heart" text="Licenses, Credits" />
+            <ActionButtonWithText onPress={this._openLicenses} iconName="md-heart" text="Licenses, Credits" />
           </View>
 
-          <FloatingToolbar top={ true } left={ true }>
-            <ActionButton onPress={ this._toMain } iconName="md-arrow-back" />
+          <FloatingToolbar top={true} left={true}>
+            <ActionButton onPress={this._toMain} iconName="md-arrow-back" />
           </FloatingToolbar>
         </View>
       );
     }
 
-    if (!image) {
+    if (!image && !camera) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <ActionButtonWithText onPress={ this._pickImage } iconName="md-photos" text="PICK AN IMAGE" />
-          <FloatingToolbar top={ true }>
-            <ActionButton onPress={ this._toHelp } iconName="md-help" />
+          <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text="PICK AN IMAGE" />
+          <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text="CAMERA" />
+          <FloatingToolbar top={true}>
+            <ActionButton onPress={this._toHelp} iconName="md-help" />
           </FloatingToolbar>
         </View>
+      );
+    } else if (!image && camera) {
+      return (
+        <Camera ref={this.cameraRef}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
+
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._closeCamera} iconName="md-arrow-back" />
+            </FloatingToolbar>
+
+            <FloatingToolbar>
+              <ActionButton onPress={this._snap} iconName="md-camera" />
+            </FloatingToolbar>
+
+          </View>
+        </Camera>
       );
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage image={ image } width={ width } height={ height } locked={ locked } />
-          { !locked &&
-          <FloatingToolbar top={ true } left={ true }>
-            <ActionButton onPress={ this._resetImage } iconName="md-arrow-back" />
-          </FloatingToolbar>
+          <TrasformableImage image={image} width={width} height={height} locked={locked} />
+          {!locked &&
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._resetImage} iconName="md-arrow-back" />
+            </FloatingToolbar>
           }
           <FloatingToolbar>
-            { !locked && <ActionButton onPress={ this._pickImage } iconName="md-photos" /> }
-            { !locked && <ActionButton onPress={ this._lock } iconName="md-unlock" /> }
-            { locked && <ActionButton onPress={ this._unlock } iconName="md-lock" /> }
+            {!locked && <ActionButton onPress={this._pickImage} iconName="md-photos" />}
+            {!locked && <ActionButton onPress={this._lock} iconName="md-unlock" />}
+            {locked && <ActionButton onPress={this._unlock} iconName="md-lock" />}
           </FloatingToolbar>
         </View>
       );
@@ -87,6 +115,29 @@ export default class App extends React.Component {
     }
   }
 
+  _openCamera = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const camera = status === 'granted';
+    this.setState({ camera }, () => {
+      if (!this.state.camera) {
+        ToastAndroid.show('No access to camera', ToastAndroid.SHORT);
+      }
+    });
+  }
+
+  _snap = async () => {
+    if (this.cameraRef) {
+      this.setState({ photoLoader: true }, async () => {
+        const photo = await this.cameraRef.current.takePictureAsync();
+        this.setState({ image: photo.uri, width: photo.width, height: photo.height, camera: false, photoLoader: false });
+      });
+    }
+  };
+
+  _closeCamera = () => {
+    this.setState({ camera: false });
+  }
+
   _resetImage = () => {
     this.setState({ image: null });
   }
@@ -107,4 +158,3 @@ export default class App extends React.Component {
     Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/licenses.md");
   }
 }
-
