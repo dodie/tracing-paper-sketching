@@ -45,7 +45,7 @@ export default class App extends React.Component {
           </View>
 
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text="back" textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
         </View>
       );
@@ -57,7 +57,7 @@ export default class App extends React.Component {
           <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text="PICK AN IMAGE" />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text="CAMERA" />
           <FloatingToolbar top={true}>
-            <ActionButton onPress={this._toHelp} iconName="md-help" />
+            <ActionButton onPress={this._toHelp} text="help" iconName="md-help" />
           </FloatingToolbar>
         </View>
       );
@@ -68,11 +68,11 @@ export default class App extends React.Component {
             {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
 
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._closeCamera} iconName="md-arrow-back" />
+              <ActionButton onPress={this._closeCamera} text="back" textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
 
             <FloatingToolbar>
-              <ActionButton onPress={this._snap} iconName="md-camera" />
+              <ActionButton onPress={this._snap} text="take photo" iconName="md-camera" />
             </FloatingToolbar>
 
           </View>
@@ -84,13 +84,13 @@ export default class App extends React.Component {
           <TrasformableImage image={image} width={width} height={height} locked={locked} />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._resetImage} iconName="md-arrow-back" />
+              <ActionButton onPress={this._resetImage} text="back" textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           }
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._pickImage} iconName="md-photos" />}
-            {!locked && <ActionButton onPress={this._lock} iconName="md-unlock" />}
-            {locked && <ActionButton onPress={this._unlock} iconName="md-lock" />}
+            {!locked && <ActionButton onPress={this._pickImage} text="open" iconName="md-photos" />}
+            {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
+            {locked && <ActionButton onPress={this._unlock} text="unlock" iconName="md-lock" />}
           </FloatingToolbar>
         </View>
       );
