@@ -29,6 +29,7 @@ const styles = Styles.create({
     backgroundColor: 'white',
     borderColor: 'black',
     elevation: 3,
+    margin: 10,
   },
   contents: {
     flex: 1,

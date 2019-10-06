@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Image, Text, View, Linking } from 'react-native';
+import React, { Fragment } from 'react';
+import { Button, Image, Text, View, Linking, ActivityIndicator, ToastAndroid } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
@@ -7,6 +7,9 @@ import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
+import { ToastAndroid } from 'react-native';
+import * as Permissions from 'expo-permissions';
+import Camera from './Camera';
 
 
 export default class App extends React.Component {
@@ -16,10 +19,17 @@ export default class App extends React.Component {
     height: null,
     locked: false,
     help: false,
+    camera: null,
+    photoLoader: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.cameraRef = React.createRef();
+  }
+
   render() {
-    let { image, width, height, locked, help } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader } = this.state;
 
     if (help) {
       return (
@@ -36,20 +46,38 @@ export default class App extends React.Component {
           </View>
 
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text="back" textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
         </View>
       );
     }
 
-    if (!image) {
+    if (!image && !camera) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text={i18n.t('pick_a_image')} />
+          <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text="CAMERA" />
           <FloatingToolbar top={true}>
-            <ActionButton onPress={this._toHelp} iconName="md-help" />
+            <ActionButton onPress={this._toHelp} text="help" iconName="md-help" />
           </FloatingToolbar>
         </View>
+      );
+    } else if (!image && camera) {
+      return (
+        <Camera ref={this.cameraRef}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
+
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._closeCamera} text="back" textPosition="right" iconName="md-arrow-back" />
+            </FloatingToolbar>
+
+            <FloatingToolbar>
+              <ActionButton onPress={this._snap} text="take photo" iconName="md-camera" />
+            </FloatingToolbar>
+
+          </View>
+        </Camera>
       );
     } else {
       return (
@@ -57,13 +85,13 @@ export default class App extends React.Component {
           <TrasformableImage image={image} width={width} height={height} locked={locked} />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._resetImage} iconName="md-arrow-back" />
+              <ActionButton onPress={this._resetImage} text="back" textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           }
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._pickImage} iconName="md-photos" />}
-            {!locked && <ActionButton onPress={this._lock} iconName="md-unlock" />}
-            {locked && <ActionButton onPress={this._unlock} iconName="md-lock" />}
+            {!locked && <ActionButton onPress={this._pickImage} text="open" iconName="md-photos" />}
+            {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
+            {locked && <ActionButton onPress={this._unlock} text="unlock" iconName="md-lock" />}
           </FloatingToolbar>
         </View>
       );
@@ -71,12 +99,16 @@ export default class App extends React.Component {
   }
 
   _lock = () => {
-    this.setState({ locked: true });
+    this.setState({ locked: true }, () => {
+      ToastAndroid.show('Screen locked', ToastAndroid.SHORT);
+    });
     activateKeepAwake();
   }
 
   _unlock = () => {
-    this.setState({ locked: false });
+    this.setState({ locked: false }, () => {
+      ToastAndroid.show('Screen unlocked', ToastAndroid.SHORT);
+    });
     deactivateKeepAwake();
   }
 
@@ -84,8 +116,33 @@ export default class App extends React.Component {
     let result = await ImagePicker.launchImageLibraryAsync();
 
     if (!result.cancelled) {
-      this.setState({ image: result.uri, width: result.width, height: result.height });
+      this.setState({ image: result.uri, width: result.width, height: result.height }, () => {
+        ToastAndroid.show('Image loaded', ToastAndroid.SHORT);
+      });
     }
+  }
+
+  _openCamera = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const camera = status === 'granted';
+    this.setState({ camera }, () => {
+      if (!this.state.camera) {
+        ToastAndroid.show('No access to camera', ToastAndroid.SHORT);
+      }
+    });
+  }
+
+  _snap = async () => {
+    if (this.cameraRef) {
+      this.setState({ photoLoader: true }, async () => {
+        const photo = await this.cameraRef.current.takePictureAsync();
+        this.setState({ image: photo.uri, width: photo.width, height: photo.height, camera: false, photoLoader: false });
+      });
+    }
+  };
+
+  _closeCamera = () => {
+    this.setState({ camera: false });
   }
 
   _resetImage = () => {
@@ -108,4 +165,3 @@ export default class App extends React.Component {
     Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/licenses.md");
   }
 }
-
