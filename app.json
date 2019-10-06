@@ -27,8 +27,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.advancedweb.tracingpapersketching",
-      "versionCode": 10
+      "package": "com.advancedweb.tracing_paper_sketching",
+      "versionCode": 11
     }
   }
 }
