@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Text, View, Linking, ActivityIndicator } from 'react-native';
+import { Button, Image, Text, View, Linking, ActivityIndicator, ToastAndroid } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
@@ -98,12 +98,16 @@ export default class App extends React.Component {
   }
 
   _lock = () => {
-    this.setState({ locked: true });
+    this.setState({ locked: true }, () => {
+      ToastAndroid.show('Screen locked', ToastAndroid.SHORT);
+    });
     activateKeepAwake();
   }
 
   _unlock = () => {
-    this.setState({ locked: false });
+    this.setState({ locked: false }, () => {
+      ToastAndroid.show('Screen unlocked', ToastAndroid.SHORT);
+    });
     deactivateKeepAwake();
   }
 
@@ -111,7 +115,9 @@ export default class App extends React.Component {
     let result = await ImagePicker.launchImageLibraryAsync();
 
     if (!result.cancelled) {
-      this.setState({ image: result.uri, width: result.width, height: result.height });
+      this.setState({ image: result.uri, width: result.width, height: result.height }, () => {
+        ToastAndroid.show('Image loaded', ToastAndroid.SHORT);
+      });
     }
   }
 
