@@ -7,7 +7,6 @@ import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
-import { ToastAndroid } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import Camera from './Camera';
 
@@ -56,7 +55,7 @@ export default class App extends React.Component {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text={i18n.t('pick_a_image')} />
-          <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text="CAMERA" />
+          <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text="help" iconName="md-help" />
           </FloatingToolbar>
@@ -100,14 +99,14 @@ export default class App extends React.Component {
 
   _lock = () => {
     this.setState({ locked: true }, () => {
-      ToastAndroid.show('Screen locked', ToastAndroid.SHORT);
+      ToastAndroid.show(i18n.t('toast_screen_locked'), ToastAndroid.SHORT);
     });
     activateKeepAwake();
   }
 
   _unlock = () => {
     this.setState({ locked: false }, () => {
-      ToastAndroid.show('Screen unlocked', ToastAndroid.SHORT);
+      ToastAndroid.show(i18n.t('toast_screen_unlocked'), ToastAndroid.SHORT);
     });
     deactivateKeepAwake();
   }
@@ -117,7 +116,7 @@ export default class App extends React.Component {
 
     if (!result.cancelled) {
       this.setState({ image: result.uri, width: result.width, height: result.height }, () => {
-        ToastAndroid.show('Image loaded', ToastAndroid.SHORT);
+        ToastAndroid.show(i18n.t('toast_image_loaded'), ToastAndroid.SHORT);
       });
     }
   }
@@ -127,7 +126,7 @@ export default class App extends React.Component {
     const camera = status === 'granted';
     this.setState({ camera }, () => {
       if (!this.state.camera) {
-        ToastAndroid.show('No access to camera', ToastAndroid.SHORT);
+        ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);
       }
     });
   }
