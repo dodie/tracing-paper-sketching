@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Kal'ka",
+  "tracing_paper_help": "Skopiruyte izobrazheniye s ekrana na fizicheskuyu bumagu. Naydite izobrazheniye v kachestve shablona. Povorot,umen'shit' ili uvelichit', chtoby nayti ideal'noye vyravnivaniye. Zablokiruyte ekran, polozhite bumagu na displey i nachnite trassirovku.",
+  "privacy_policy": "politika konfidentsial'nosti",
+  "licenses_credits": "Litsenzii, Kredity",
+  "pick_a_image": "Vybrat' izobrazheniye",
+  "camera": "KAMERY",
+  "toast_screen_locked": "Ekran zablokirovan",
+  "toast_screen_unlocked": "Ekran razblokirovan",
+  "toast_image_loaded": "Izobrazheniye zagruzheno",
+  "toast_no_access_to_camera": "Net dostupa k kamere"
+}
