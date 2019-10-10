@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Transparentpapier",
+  "tracing_paper_help": "Kopieren Sie ein Bild vom Bildschirm auf ein physisches Papier. Suchen Sie ein Bild als Vorlage. Drehen, verkleinern oder zoomen Sie, um die perfekte Ausrichtung zu finden. Sperren Sie den Bildschirm, legen Sie ein Blatt Papier über das Display und beginnen Sie mit der Verfolgung.",
+  "privacy_policy": "Datenschutz-Bestimmungen",
+  "licenses_credits": "Lizenzen, Credits",
+  "pick_a_image": "WÄHLEN SIE EIN BILD AUS",
+  "camera": "KAMERA",
+  "toast_screen_locked": "Bildschirm gesperrt",
+  "toast_screen_unlocked": "Bildschirm entsperrt",
+  "toast_image_loaded": "Bild geladen",
+  "toast_no_access_to_camera": "Kein Zugriff auf Kamera"
+}
