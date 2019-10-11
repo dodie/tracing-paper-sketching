@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "トレーシングペーパー",
+  "tracing_paper_help": "端末のスクリーンに表示した画像を紙に書き写すためのアプリです。使い方は、まず、書き写す画像を選択します。次に、回転や拡大縮小して、最適な位置に調整します。最後に、画面をロックして、端末の上に紙を置いて、トレースを開始しましょう。",
+  "privacy_policy": "プライバシーポリシー",
+  "licenses_credits": "ライセンス・クレジット",
+  "pick_a_image": "画像を選択",
+  "camera": "カメラ",
+  "toast_screen_locked": "スクリーンをロックしました",
+  "toast_screen_unlocked": "スクリーンのロックを解除しました",
+  "toast_image_loaded": "画像を読み込みました",
+  "toast_no_access_to_camera": "カメラへのアクセス許可がありません"
+}
