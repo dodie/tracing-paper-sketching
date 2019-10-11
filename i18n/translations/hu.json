@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Pauszpapír",
+  "tracing_paper_help": "Másolja a képet a képernyőről egy fizikai papírra. Keressen képet sablonként. Forgassa el, zsugorítsa vagy zoomolja a tökéletes igazítást. Zárja le a képernyőt, tegyen egy papírt a kijelzőre, és kezdje meg a nyomkövetést.",
+  "privacy_policy": "Adatvédelmi irányelvek",
+  "licenses_credits": "Engedélyek, jóváírások",
+  "pick_a_image": "Válasszon egy képet",
+  "camera": "KAMERA",
+  "toast_screen_locked": "A képernyő le van zárva",
+  "toast_screen_unlocked": "A képernyő nyitva",
+  "toast_image_loaded": "Kép betöltve ",
+  "toast_no_access_to_camera": "Nincs hozzáférés a kamerához"
+}
