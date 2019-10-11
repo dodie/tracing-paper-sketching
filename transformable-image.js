@@ -47,6 +47,10 @@ export default class TransformableImage extends React.Component {
       inputRange: [-100, 100],
       outputRange: ['-100rad', '100rad'],
     });
+    this._rotateY = this._rotate.interpolate({
+      inputRange: [0, 180],
+      outputRange: ['180deg', '360deg'],
+    });
     this._lastRotate = 0;
     this._onRotateGestureEvent = Animated.event(
       [{ nativeEvent: { rotation: this._rotate } }],
@@ -54,8 +58,8 @@ export default class TransformableImage extends React.Component {
     );
 
     /* Drag */
-    this._drag = {x: new Animated.Value(0), y: new Animated.Value(0)};
-    this._lastDrag = {x: 0, y: 0};
+    this._drag = { x: new Animated.Value(0), y: new Animated.Value(0) };
+    this._lastDrag = { x: 0, y: 0 };
     this._onDragGestureEvent = Animated.event(
       [{ nativeEvent: { translationX: this._drag.x, translationY: this._drag.y } }],
       { useNativeDriver: true }
@@ -88,6 +92,14 @@ export default class TransformableImage extends React.Component {
   };
 
   render() {
+    let transform = [
+      { perspective: 200 },
+      { translateX: this._drag.x },
+      { translateY: this._drag.y },
+      { scale: this._scale },
+      { rotate: this._rotateStr },
+    ];
+    this.props.mirror ? transform.push({ rotateY: this._rotateY }) : null;
     return (
       <PanGestureHandler
         enabled={!this.props.locked}
@@ -117,15 +129,7 @@ export default class TransformableImage extends React.Component {
                     <Animated.Image
                       style={[
                         { width: this._width, height: this._height },
-                        {
-                          transform: [
-                            { perspective: 200 },
-                            { translateX: this._drag.x },
-                            { translateY: this._drag.y },
-                            { scale: this._scale },
-                            { rotate: this._rotateStr },
-                          ],
-                        },
+                        { transform },
                       ]}
                       source={{ uri: this.props.image }}
                     />
