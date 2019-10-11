@@ -1,0 +1,12 @@
+{
+    "tracing_paper": "Papel vegetal",
+    "tracing_paper_help": "Copie uma imagem da tela para um papel físico. Encontre uma imagem como modelo. Gire, encolha ou faça zoom para encontrar o alinhamento perfeito. Bloqueie a tela, coloque um papel sobre a tela e comece a traçar.",
+    "privacy_policy": "Política de Privacidade",
+    "licenses_credits": "Licenças, Créditos",
+    "pick_a_image": "SELECIONE UMA IMAGEM",
+    "camera": "CAMERA",
+    "toast_screen_locked": "Tela bloqueada",
+    "toast_screen_unlocked": "Tela desbloqueada",
+    "toast_image_loaded": "Imagem carregada",
+    "toast_no_access_to_camera": "Sem acesso a camera"
+}
