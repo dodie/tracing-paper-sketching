@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Tracing Paper",
+  "tracing_paper_help": "Kopieer een afbeelding van het scherm naar een fysiek papier. Zoek een afbeelding als sjabloon. Roteren, verkleinen of zoomen om de perfecte uitlijning te vinden. Vergrendel het scherm, plaats een papier op het scherm en start de tracering.",
+  "privacy_policy": "Privacy Policy",
+  "licenses_credits": "Licenses, Credits",
+  "pick_a_image": "KIES EEN AFBEELDING",
+  "camera": "CAMERA",
+  "toast_screen_locked": "Scherm vergrendeld",
+  "toast_screen_unlocked": "Scherm ontgrendeld",
+  "toast_image_loaded": "Afbeelding geladen",
+  "toast_no_access_to_camera": "Geen toegang tot camera"
+}
