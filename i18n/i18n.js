@@ -12,10 +12,11 @@ import nl from "./translations/nl.json";
 import sk from "./translations/sk.json";
 import es from "./translations/es.json";
 import it from './translations/it.json';
+import hu from './translations/hu.json';
 import fr from './translations/fr.json';
 
 i18n.fallbacks = true;
-i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, fr };
+i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, hu, fr };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
 
