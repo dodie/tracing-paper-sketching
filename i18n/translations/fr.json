@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Tracing Paper",
+  "tracing_paper_help": "Copier une image de l'écran sur un papier physique. Trouvez une image en tant que modèle. Faites pivoter, réduisez ou zoomez pour trouver l'alignement parfait. Verrouillez l'écran, placez un papier sur l'écran et lancez le traçage.",
+  "privacy_policy": "Privacy Policy",
+  "licenses_credits": "Licenses, Credits",
+  "pick_a_image": "CHOISISSEZ UNE IMAGE",
+  "camera": "CAMÉRA",
+  "toast_screen_locked": "Écran verrouillé",
+  "toast_screen_unlocked": "Écran déverrouillé",
+  "toast_image_loaded": "Image chargée",
+  "toast_no_access_to_camera": "Pas d'accès à la caméra"
+}
