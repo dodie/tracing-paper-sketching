@@ -9,9 +9,10 @@ import sr from "./translations/sr.json";
 import ja from "./translations/ja.json";
 import de from "./translations/de.json";
 import nl from "./translations/nl.json";
+import sk from "./translations/sk.json";
 
 i18n.fallbacks = true;
-i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl };
+i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
 
