@@ -20,6 +20,7 @@ export default class App extends React.Component {
     help: false,
     camera: null,
     photoLoader: false,
+    mirror: false,
   };
 
   constructor(props) {
@@ -28,7 +29,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror } = this.state;
 
     if (help) {
       return (
@@ -81,12 +82,15 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage image={image} width={width} height={height} locked={locked} />
+          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._resetImage} text="back" textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           }
+          <FloatingToolbar left={true}>
+            {!locked && <ActionButton onPress={this._mirror} text="mirror" textPosition="right" iconName="md-repeat" />}
+          </FloatingToolbar>
           <FloatingToolbar>
             {!locked && <ActionButton onPress={this._pickImage} text="open" iconName="md-photos" />}
             {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
@@ -95,6 +99,10 @@ export default class App extends React.Component {
         </View>
       );
     }
+  }
+
+  _mirror = () => {
+    this.state.mirror ? this.setState({ mirror: false }) : this.setState({ mirror: true });
   }
 
   _lock = () => {
