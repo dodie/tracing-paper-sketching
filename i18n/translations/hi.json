@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "ट्रेसिंग पेपर",
+  "tracing_paper_help": "स्क्रीन से सामान्य काग़ज़ में किसी छवि की प्रतिलिपि बनाएँ। टेम्पलेट के रूप में कोई छवि ढूँढें। सही संरेखण खोजने के लिए घुमाएँ, सिकोड़ें या ज़ूम करें। स्क्रीन लॉक करें, डिस्प्ले पर एक पेपर रखें। और अनुरेखण शुरू करें।",
+  "privacy_policy": "Privacy Policy",
+  "licenses_credits": "Licenses, Credits",
+  "pick_a_image": "कोई छवि चुनें",
+  "camera": "कैमरा",
+  "toast_screen_locked": "स्क्रीन लॉक की गई",
+  "toast_screen_unlocked": "स्क्रीन अनलॉक की गई",
+  "toast_image_loaded": "छवि लोड की गई",
+  "toast_no_access_to_camera": "कैमरा पहुँच योग्य नहीं है"
+}
