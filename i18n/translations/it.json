@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Tracing Paper",
+  "tracing_paper_help": "Copia un'immagine dallo schermo su carta. Cerca un'immagine da usare come template. Ruota, comprimi o zoomma per trovare il giusto allineamento. Blocca lo schermo, posiziona un foglio di carta sullo schermo e copia l'immagine.",
+  "privacy_policy": "Condizioni sulla privacy",
+  "licenses_credits": "Licenze, Crediti",
+  "pick_a_image": "SCEGLI UN'IMMAGINE",
+  "camera": "FOTOCAMERA",
+  "toast_screen_locked": "Schermo bloccato",
+  "toast_screen_unlocked": "Schermo sbloccato",
+  "toast_image_loaded": "Immagine caricata",
+  "toast_no_access_to_camera": "Impossibile accedere alla fotocamera"
+}
