@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Tracing Paper",
+  "tracing_paper_help": "Copie uma imagem da tela para um papel físico. Procure uma imagem como um modelo. Gire, diminua ou aumente para encontrar o alinhamento perfeito. Trave a tela, coloque um papel sobre o visor e começar a desenhar.",
+  "privacy_policy": "Política de Privacidade",
+  "licenses_credits": "Licenças, Créditos",
+  "pick_a_image": "SELECIONE UMA IMAGEM",
+  "camera": "CÂMERA",
+  "toast_screen_locked": "Tela travada",
+  "toast_screen_unlocked": "Tela destravada",
+  "toast_image_loaded": "Imagem carregada",
+  "toast_no_access_to_camera": "Sem acesso à câmera"
+}
