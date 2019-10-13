@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Kertas Jiplak",
+  "tracing_paper_help": "Salin gambar dari layar ke atas kertas. Cari gambar sebagai contoh. Putar, kecilkan, atau perbesar untuk mencari penjajaran terbaik. Kunci ponselmu, letakkan kertas diatas layar ponsel dan mulai menjiplak.",
+  "privacy_policy": "Kebijakan Privasi",
+  "licenses_credits": "Lisensi, Penghargaan",
+  "pick_a_image": "PILIH GAMBAR",
+  "camera": "KAMERA",
+  "toast_screen_locked": "Layar terkunci",
+  "toast_screen_unlocked": "Layar terbuka",
+  "toast_image_loaded": "Gambar berhasil ditampilkan",
+  "toast_no_access_to_camera": "Tidak ada akses pada kamera"
+}
