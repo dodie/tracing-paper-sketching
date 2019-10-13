@@ -20,29 +20,33 @@ import bn from "./translations/bn.json";
 import hi from "./translations/hi.json";
 import id from "./translations/id.json";
 import zh from "./translations/zh.json";
+import zh_CN from "./translations/zh_CN.json";
+import zh_TW from "./translations/zh_TW.json";
 
 i18n.fallbacks = true;
 i18n.translations = {
-  en,
-  pl,
-  ru,
-  th,
-  pt_BR,
-  sr,
-  ja,
-  de,
-  nl,
-  sk,
-  es,
-  it,
-  hu,
-  fr,
-  cz,
-  ar,
-  bn,
-  hi,
-  id,
-  zh
+  en: en,
+  pl: pl,
+  ru: ru,
+  th: th,
+  pt_BR: pt_BR,
+  sr: sr,
+  ja: ja,
+  de: de,
+  nl: nl,
+  sk: sk,
+  es: es,
+  it: it,
+  hu: hu,
+  fr: fr,
+  cz: cz,
+  ar: ar,
+  bn: bn,
+  hi: hi,
+  id: id,
+  zh: zh,
+  "zh_Hans-CN": zh_CN,
+  "zh-Hant-TW": zh_TW
 };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
