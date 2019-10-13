@@ -16,9 +16,10 @@ import hu from './translations/hu.json';
 import fr from './translations/fr.json';
 import cz from './translations/cz.json';
 import ar from './translations/ar.json';
+import bn from './translations/bn.json';
 
 i18n.fallbacks = true;
-i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, hu, fr, cz, ar };
+i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, hu, fr, cz, ar, bn };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
 
