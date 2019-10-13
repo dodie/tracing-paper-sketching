@@ -12,10 +12,16 @@ import nl from "./translations/nl.json";
 import sk from "./translations/sk.json";
 import es from "./translations/es.json";
 import it from './translations/it.json';
+import hu from './translations/hu.json';
+import fr from './translations/fr.json';
+import cz from './translations/cz.json';
+import ar from './translations/ar.json';
+import bn from './translations/bn.json';
+import hi from "./translations/hi.json";
 import id from "./translations/id.json";
 
 i18n.fallbacks = true;
-i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, id };
+i18n.translations = { en, pl, ru, th, pt_BR, sr, ja, de, nl, sk, es, it, hu, fr, cz, ar, bn, hi, id };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
 
