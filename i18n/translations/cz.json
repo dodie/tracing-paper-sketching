@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "Pauzovací papír",
+  "tracing_paper_help": "Zkopírujte obrázek z obrazovky na fyzický papír. Najděte obrázek jako šablonu. Otočením, zmenšením nebo zvětšením dosáhnete dokonalého zarovnání. Uzamkněte obrazovku, položte na displej papír a začněte sledovat.",
+  "privacy_policy": "Zásady ochrany osobních údajů",
+  "licenses_credits": "Licence, úvěry",
+  "pick_a_image": "VYBERTE OBRAZ",
+  "camera": "FOTOAPARÁT",
+  "toast_screen_locked": "Obrazovka uzamčena",
+  "toast_screen_unlocked": "Obrazovka odemčena",
+  "toast_image_loaded": "Obrázek načten",
+  "toast_no_access_to_camera": "Žádný přístup k fotoaparátu"
+}
