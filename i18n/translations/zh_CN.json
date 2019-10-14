@@ -1,0 +1,12 @@
+{
+  "tracing_paper": "描图纸",
+  "tracing_paper_help": "把一个图片复制到物理的纸。用一个图片当模板。转并缩放到完美的对准。锁好屏幕以后，把描图纸放在手机屏幕的上面并开始画画。",
+  "privacy_policy": "隐私政策",
+  "licenses_credits": "许可, 贡献者名单",
+  "pick_a_image": "选择图片",
+  "camera": "相机",
+  "toast_screen_locked": "屏幕已锁",
+  "toast_screen_unlocked": "屏幕已开锁",
+  "toast_image_loaded": "图片已加载",
+  "toast_no_access_to_camera": "没有相机存取"
+}
