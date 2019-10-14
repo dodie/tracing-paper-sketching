@@ -92,7 +92,6 @@ export default class App extends React.Component {
             {!locked && <ActionButton onPress={this._mirror} text="mirror" textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._pickImage} text="open" iconName="md-photos" />}
             {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
             {locked && <ActionButton onPress={this._unlock} text="unlock" iconName="md-lock" />}
           </FloatingToolbar>
