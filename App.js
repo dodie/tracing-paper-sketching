@@ -46,7 +46,7 @@ export default class App extends React.Component {
           </View>
 
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} text="back" textPosition="right" iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
         </View>
       );
@@ -58,7 +58,7 @@ export default class App extends React.Component {
           <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text={i18n.t('pick_a_image')} />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
           <FloatingToolbar top={true}>
-            <ActionButton onPress={this._toHelp} text="help" iconName="md-help" />
+            <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
         </View>
       );
@@ -69,11 +69,11 @@ export default class App extends React.Component {
             {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
 
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._closeCamera} text="back" textPosition="right" iconName="md-arrow-back" />
+              <ActionButton onPress={this._closeCamera} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
 
             <FloatingToolbar>
-              <ActionButton onPress={this._snap} text="take photo" iconName="md-camera" />
+              <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
             </FloatingToolbar>
 
           </View>
@@ -85,15 +85,15 @@ export default class App extends React.Component {
           <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._resetImage} text="back" textPosition="right" iconName="md-arrow-back" />
+              <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           }
           <FloatingToolbar left={true}>
-            {!locked && <ActionButton onPress={this._mirror} text="mirror" textPosition="right" iconName="md-repeat" />}
+            {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text="lock" iconName="md-unlock" />}
-            {locked && <ActionButton onPress={this._unlock} text="unlock" iconName="md-lock" />}
+            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-unlock" />}
+            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock" />}
           </FloatingToolbar>
         </View>
       );

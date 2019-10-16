@@ -8,5 +8,11 @@
   "toast_screen_locked": "Schermo bloccato",
   "toast_screen_unlocked": "Schermo sbloccato",
   "toast_image_loaded": "Immagine caricata",
-  "toast_no_access_to_camera": "Impossibile accedere alla fotocamera"
+  "toast_no_access_to_camera": "Impossibile accedere alla fotocamera",
+  "button_back": "indietro",
+  "button_help": "aiuto",
+  "button_takephoto": "scatta foto",
+  "button_mirror": "specchia",
+  "button_lock": "blocca",
+  "button_unlock": "sblocca"
 }

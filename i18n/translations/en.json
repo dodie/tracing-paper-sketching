@@ -8,5 +8,11 @@
   "toast_screen_locked": "Screen locked",
   "toast_screen_unlocked": "Screen unlocked",
   "toast_image_loaded": "Image loaded",
-  "toast_no_access_to_camera": "No access to camera"
+  "toast_no_access_to_camera": "No access to camera",
+  "button_back": "back",
+  "button_help": "help",
+  "button_takephoto": "take photo",
+  "button_mirror": "mirror",
+  "button_lock": "lock",
+  "button_unlock": "unlock"
 }
