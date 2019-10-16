@@ -1,12 +1,22 @@
-{
+{:
     "tracing_paper": "Tracing Paper",
     "tracing_paper_help": "Copiar una imagen desde la pantalla al papel. Toma una imagen como plantilla. Gírala, encogela o agrandala hasta encontrar la alineación deseada. Bloquea la pantalla, pon papel sobre esta y comienza a dibujar.",
     "privacy_policy": "Política de Privacidad",
     "licenses_credits": "Licencias, Creditos",
     "pick_a_image": "SELECCIONA UNA IMAGEN",
     "camera": "CAMARA",
+    "enter_text": "texto",
     "toast_screen_locked": "Pantalla bloqueada",
     "toast_screen_unlocked": "Pantalla desbloqueada",
     "toast_image_loaded": "Imagen cargada",
-    "toast_no_access_to_camera": "Sin acceso a la camara"
+    "toast_no_access_to_camera": "Sin acceso a la camara",
+    "button_back": "atrás",
+    "button_help": "ayuda",
+    "button_takephoto": "tomar fotografía",
+    "button_mirror": "espejo",
+    "button_lock": "bloquear",
+    "button_unlock": "desbloquear",
+    "button_contrast": "contraste",
+    "button_brightness": "brillo",
+    "button_monochrome": "monocromo"
 }
