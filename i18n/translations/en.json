@@ -3,8 +3,9 @@
   "tracing_paper_help": "Copy an image from the screen to a physical paper. Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.",
   "privacy_policy": "Privacy Policy",
   "licenses_credits": "Licenses, Credits",
-  "pick_a_image": "PICK AN IMAGE",
-  "camera": "CAMERA",
+  "pick_a_image": "Pick an image",
+  "camera": "Camera",
+  "enter_text": "Text",
   "toast_screen_locked": "Screen locked",
   "toast_screen_unlocked": "Screen unlocked",
   "toast_image_loaded": "Image loaded",
@@ -14,5 +15,8 @@
   "button_takephoto": "take photo",
   "button_mirror": "mirror",
   "button_lock": "lock",
-  "button_unlock": "unlock"
+  "button_unlock": "unlock",
+  "button_contrast": "contrast",
+  "button_brightness": "brightness",
+  "button_monochrome": "monochrome"
 }
