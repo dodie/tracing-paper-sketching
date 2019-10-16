@@ -3,10 +3,20 @@
   "tracing_paper_help": "Copie uma imagem da tela para um papel físico. Procure uma imagem como um modelo. Gire, diminua ou aumente para encontrar o alinhamento perfeito. Trave a tela, coloque um papel sobre o visor e começar a desenhar.",
   "privacy_policy": "Política de Privacidade",
   "licenses_credits": "Licenças, Créditos",
-  "pick_a_image": "SELECIONE UMA IMAGEM",
-  "camera": "CÂMERA",
+  "pick_a_image": "Selecione um imagem",
+  "camera": "Câmera",
+  "enter_text": "Texto",
   "toast_screen_locked": "Tela travada",
   "toast_screen_unlocked": "Tela destravada",
   "toast_image_loaded": "Imagem carregada",
-  "toast_no_access_to_camera": "Sem acesso à câmera"
+  "toast_no_access_to_camera": "Sem acesso à câmera",
+  "button_back": "Voltar",
+  "button_help": "Ajuda",
+  "button_takephoto": "Tirar uma foto",
+  "button_mirror": "Espelhar",
+  "button_lock": "Bloquear",
+  "button_unlock": "Desbloquear",
+  "button_contrast": "Contraste",
+  "button_brightness": "Brilho",
+  "button_monochrome": "Monocromático"
 }
