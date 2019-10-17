@@ -1,0 +1,22 @@
+{
+  "tracing_paper": "Tracing Paper",
+  "tracing_paper_help": "გადაიღეთ ასლი ეკრანიდან ქაღალდზე ფიზიკურად. გამოიყენეთ სურათი როგორც შაბლონი. მოაბრუნეთ, დააპატარავეთ ან გაზარდეთ, რომ იპოვოთ სრულყოფილი სწორება. დაბლოკეთ ეკრანი, განათავსეთ ქაღალდი ეკრანზე და დაიწყეთ გადახატვა.",
+  "privacy_policy": "კონფიდენციალურობის პოლიტიკა",
+  "licenses_credits": "ლიცენზიები, კრედიტები",
+  "pick_a_image": "აირჩიეთ სურათი",
+  "camera": "კამერა",
+  "enter_text": "ტექსტი",
+  "toast_screen_locked": "ეკრანი დაბლოკილია",
+  "toast_screen_unlocked": "ეკრანი განბლოკილია",
+  "toast_image_loaded": "სურათი ჩატვირთულია",
+  "toast_no_access_to_camera": "კამერაზე მიუწვდება არაა დაშვებული",
+  "button_back": "უკან",
+  "button_help": "დახმარება",
+  "button_takephoto": "ფოტოს გადაღება",
+  "button_mirror": "სარკე",
+  "button_lock": "დაბლოკვა",
+  "button_unlock": "განბლოკვა",
+  "button_contrast": "კონტრასტი",
+  "button_brightness": "სიკაშკაშე",
+  "button_monochrome": "მონოქრომული"
+}
