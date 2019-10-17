@@ -22,6 +22,7 @@ import id from "./translations/id.json";
 import zh from "./translations/zh.json";
 import zh_CN from "./translations/zh_CN.json";
 import zh_TW from "./translations/zh_TW.json";
+import ka from "./translations/ka.json";
 
 i18n.fallbacks = true;
 i18n.translations = {
@@ -46,7 +47,8 @@ i18n.translations = {
   id: id,
   zh: zh,
   "zh_Hans-CN": zh_CN,
-  "zh-Hant-TW": zh_TW
+  "zh-Hant-TW": zh_TW,
+  ka: ka
 };
 i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
