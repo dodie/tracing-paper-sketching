@@ -1,0 +1,22 @@
+{
+  "tracing_paper": "Aydınger Kağıdı",
+  "tracing_paper_help": "Ekrandaki bir resmi bir kağıda kopyala. Şablon olarak kullanılabilecek bir resim bul. Mükemmel hizalamayı bulmak için döndür, daralt veya yakınlaştır. Ekranı kilitle, ekranın üzerine bir kağıt koy ve izlemeye başla.",
+  "privacy_policy": "Gizlilik Politikası",
+  "licenses_credits": "Lisanslar, Krediler",
+  "pick_a_image": "Resim seç",
+  "camera": "Kamera",
+  "enter_text": "Metin",
+  "toast_screen_locked": "Ekran kilitlendi",
+  "toast_screen_unlocked": "Ekran kilidi açıldı",
+  "toast_image_loaded": "Resim yüklendi",
+  "toast_no_access_to_camera": "Kameraya ulaşılamıyor",
+  "button_back": "geri",
+  "button_help": "yardım",
+  "button_takephoto": "fotoğraf çek",
+  "button_mirror": "ayna",
+  "button_lock": "kilitle",
+  "button_unlock": "kilidi aç",
+  "button_contrast": "kontrast",
+  "button_brightness": "parlaklık",
+  "button_monochrome": "tek renk"
+}
