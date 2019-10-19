@@ -9,6 +9,7 @@ import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
 import * as Permissions from 'expo-permissions';
 import Camera from './Camera';
+import * as Brightness from 'expo-brightness';
 
 
 export default class App extends React.Component {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     camera: null,
     photoLoader: false,
     mirror: false,
+    brightness: false,
   };
 
   constructor(props) {
@@ -29,7 +31,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness } = this.state;
 
     if (help) {
       return (
@@ -89,6 +91,7 @@ export default class App extends React.Component {
             </FloatingToolbar>
           }
           <FloatingToolbar left={true}>
+            {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
             {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
           <FloatingToolbar>
@@ -98,6 +101,15 @@ export default class App extends React.Component {
         </View>
       );
     }
+  }
+
+  _brightness = async () => {
+    if(!this.state.brightness){
+      await Brightness.setBrightnessAsync(1)
+    }else{
+      await Brightness.useSystemBrightnessAsync()
+    }
+    this.state.brightness ? this.setState({ brightness: false }) : this.setState({ brightness: true });
   }
 
   _mirror = () => {
