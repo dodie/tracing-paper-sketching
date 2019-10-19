@@ -5,8 +5,18 @@
   "licenses_credits": "ライセンス・クレジット",
   "pick_a_image": "画像を選択",
   "camera": "カメラ",
+  "enter_text": "文字",
   "toast_screen_locked": "スクリーンをロックしました",
   "toast_screen_unlocked": "スクリーンのロックを解除しました",
   "toast_image_loaded": "画像を読み込みました",
-  "toast_no_access_to_camera": "カメラへのアクセス許可がありません"
+  "toast_no_access_to_camera": "カメラへのアクセス許可がありません",
+  "button_back": "戻る",
+  "button_help": "ヘルプ",
+  "button_takephoto": "写真を撮る",
+  "button_mirror": "反転",
+  "button_lock": "ロック",
+  "button_unlock": "ロック解除",
+  "button_contrast": "コントラスト",
+  "button_brightness": "輝度",
+  "button_monochrome": "モノクロ"
 }
