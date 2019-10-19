@@ -38,7 +38,7 @@ const styles = Styles.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   buttonText: {
     color: 'gray',
