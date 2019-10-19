@@ -104,10 +104,10 @@ export default class App extends React.Component {
   }
 
   _brightness = async () => {
-    if(!this.state.brightness){
-      await Brightness.setBrightnessAsync(1)
-    }else{
-      await Brightness.useSystemBrightnessAsync()
+    if (!this.state.brightness) {
+      await Brightness.setBrightnessAsync(1);
+    } else {
+      await Brightness.useSystemBrightnessAsync();
     }
     this.state.brightness ? this.setState({ brightness: false }) : this.setState({ brightness: true });
   }
@@ -131,8 +131,7 @@ export default class App extends React.Component {
   }
 
   _pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync();
-
+    const result = await ImagePicker.launchImageLibraryAsync();
     if (!result.cancelled) {
       this.setState({ image: result.uri, width: result.width, height: result.height }, () => {
         ToastAndroid.show(i18n.t('toast_image_loaded'), ToastAndroid.SHORT);

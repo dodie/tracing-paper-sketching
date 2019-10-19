@@ -11,3 +11,4 @@ const Camera = ({ children }, ref) => (
 );
 
 export default React.forwardRef(Camera);
+

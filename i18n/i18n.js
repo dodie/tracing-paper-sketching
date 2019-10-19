@@ -56,3 +56,4 @@ i18n.locale = Localization.locale;
 i18n.defaultLocale = "en-EN";
 
 export default i18n;
+

@@ -22,4 +22,3 @@ const style = Styles.create({
   }
 });
 
-
