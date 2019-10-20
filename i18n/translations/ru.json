@@ -3,10 +3,20 @@
   "tracing_paper_help": "Скопируйте изображение с экрана на бумагу. Найдите изображение-шаблон. Выровняйте его за счёт вращения и масштабирования. Заблокируйте экран, накройте бумагой и начинайте обводить.",
   "privacy_policy": "Политика конфиденциальности",
   "licenses_credits": "Лицензии, Авторство",
-  "pick_a_image": "ВЫБРАТЬ ИЗОБРАЖЕНИЕ",
-  "camera": "КАМЕРА",
+  "pick_a_image": "Выбрать изображение",
+  "camera": "Камера",
+  "enter_text": "Текст",
   "toast_screen_locked": "Экран заблокирован",
   "toast_screen_unlocked": "Экран разблокирован",
   "toast_image_loaded": "Изображение загружено",
-  "toast_no_access_to_camera": "Нет доступа к камере"
+  "toast_no_access_to_camera": "Нет доступа к камере",
+  "button_back": "назад",
+  "button_help": "помощь",
+  "button_takephoto": "сфотографировать",
+  "button_mirror": "зеркало",
+  "button_lock": "заблокировать",
+  "button_unlock": "разблокировать",
+  "button_contrast": "контраст",
+  "button_brightness": "яркость",
+  "button_monochrome": "монохромный"
 }
