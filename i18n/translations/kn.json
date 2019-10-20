@@ -1,0 +1,24 @@
+{
+    "tracing_paper": "ಕಾಗದವನ್ನು ಪತ್ತೆಹಚ್ಚುವುದು",
+    "tracing_paper_help": "ಚಿತ್ರವನ್ನು ಪರದೆಯಿಂದ ಭೌತಿಕ ಕಾಗದಕ್ಕೆ ನಕಲಿಸಿ. ಚಿತ್ರವನ್ನು ಟೆಂಪ್ಲೇಟ್‌ನಂತೆ ಹುಡುಕಿ. ಪರಿಪೂರ್ಣ ಜೋಡಣೆಯನ್ನು ಕಂಡುಹಿಡಿಯಲು ತಿರುಗಿಸಿ, ಕುಗ್ಗಿಸಿ ಅಥವಾ om ೂಮ್ ಮಾಡಿ. ಪರದೆಯನ್ನು ಲಾಕ್ ಮಾಡಿ, ಪ್ರದರ್ಶನದ ಮೇಲೆ ಕಾಗದವನ್ನು ಹಾಕಿ ಮತ್ತು ಪತ್ತೆಹಚ್ಚಲು ಪ್ರಾರಂಭಿಸಿ.",
+    "privacy_policy": "ಗೌಪ್ಯತಾ ನೀತಿ",
+    "licenses_credits": "ಪರವಾನಗಿಗಳು, ಸಾಲಗಳು",
+    "pick_a_image": "ಚಿತ್ರವನ್ನು ಆರಿಸಿ",
+    "camera": "ಕ್ಯಾಮೆರಾ",
+    "enter_text": "ಪಠ್ಯ",
+    "toast_screen_locked": "ಪರದೆಯನ್ನು ಲಾಕ್ ಮಾಡಲಾಗಿದೆ",
+    "toast_screen_unlocked": "ಪರದೆಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲಾಗಿದೆ",
+    "toast_image_loaded": "ಚಿತ್ರವನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಿದೆ",
+    "toast_no_access_to_camera": "ಕ್ಯಾಮರಾ ಪ್ರವೇಶವಿಲ್ಲ",
+    "button_back": "ಹಿಂದೆ",
+    "button_help": "ಸಹಾಯ",
+    "button_takephoto": "ಭಾವಚಿತ್ರವನ್ನು ತೆಗಿರಿ",
+    "button_mirror": "ಕನ್ನಡಿ",
+    "button_lock": "ಲಾಕ್",
+    "button_unlock": "ಅನ್ಲಾಕ್ ಮಾಡಿ",
+    "button_contrast": "ಕಾಂಟ್ರಾಸ್ಟ್",
+    "button_brightness": "ಹೊಳಪು",
+    "button_monochrome": "ಏಕವರ್ಣದ"
+  }
+  
+  
