@@ -38,7 +38,7 @@ export default class App extends React.Component {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', padding: 10 }}>
             <Text style={{ fontWeight: 'bold', color: 'white', marginBottom: 5 }}>{i18n.t('tracing_paper')}</Text>
-            <Text style={{ color: 'white' }}>{i18n.t('tracing_paper_help')}</Text>
+            <Text style={{textAlign: 'center', color: 'white' }}>{i18n.t('tracing_paper_help')}</Text>
 
             <View style={{ margin: 5 }}></View>
             <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text={i18n.t('privacy_policy')} />
