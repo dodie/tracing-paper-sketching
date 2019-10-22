@@ -10,14 +10,14 @@ export default class ActionButtonwithText extends Component {
 
   render() {
     return (
-      <View style={ styles.button }>
-        <TouchableOpacity onPress={ this.props.onPress }>
+      <TouchableOpacity onPress={ this.props.onPress }>
+        <View style={ styles.button }>
           <View style={ styles.contents }>
             <Ionicons name={ this.props.iconName } size={ 24 } color="#444" />
             <Text style={ styles.text }>{ this.props.text }</Text>
           </View>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     );
   }
 }
