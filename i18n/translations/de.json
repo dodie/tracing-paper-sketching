@@ -1,12 +1,21 @@
 {
   "tracing_paper": "Transparentpapier",
-  "tracing_paper_help": "Kopieren Sie ein Bild vom Bildschirm auf ein physisches Papier. Suchen Sie ein Bild als Vorlage. Drehen, verkleinern oder zoomen Sie, um die perfekte Ausrichtung zu finden. Sperren Sie den Bildschirm, legen Sie ein Blatt Papier über das Display und beginnen Sie mit der Verfolgung.",
-  "privacy_policy": "Datenschutz-Bestimmungen",
+  "tracing_paper_help": "Kopiere ein Bild vom Bildschirm auf ein physisches Blatt Papier. Suche ein Bild als Vorlage. Drehen, verkleinern oder zoome, um die perfekte Ausrichtung zu finden. Sperre den Bildschirm, lege ein Blatt Papier über das Display und beginne mit dem Abpausen.",
+  "privacy_policy": "Datenschutz Bestimmungen",
   "licenses_credits": "Lizenzen, Credits",
-  "pick_a_image": "WÄHLEN SIE EIN BILD AUS",
-  "camera": "KAMERA",
+  "pick_a_image": "Wähle ein Bild aus",
+  "camera": "Kamera",
   "toast_screen_locked": "Bildschirm gesperrt",
   "toast_screen_unlocked": "Bildschirm entsperrt",
   "toast_image_loaded": "Bild geladen",
-  "toast_no_access_to_camera": "Kein Zugriff auf Kamera"
+  "toast_no_access_to_camera": "Kein Zugriff auf Kamera",
+  "button_back": "Zurück",
+  "button_help": "Hilfe",
+  "button_takephoto": "Mach ein Foto",
+  "button_mirror": "Spiegeln",
+  "button_lock": "Sperren",
+  "button_unlock": "Entsperren",
+  "button_contrast": "Kontrast",
+  "button_brightness": "Helligkeit",
+  "button_monochrome": "Monochrom"
 }
