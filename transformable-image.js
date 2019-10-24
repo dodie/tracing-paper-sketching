@@ -8,6 +8,7 @@ import {
   State,
 } from 'react-native-gesture-handler';
 import Styles from './styles'
+import { Grayscale } from 'react-native-color-matrix-image-filters';
 
 export default class TransformableImage extends React.Component {
   panRef = React.createRef();
@@ -91,6 +92,23 @@ export default class TransformableImage extends React.Component {
     }
   };
 
+  renderImage(transform) {
+    const { monochrome, image } = this.props;
+    const Image = () => (
+      <Animated.Image
+        style={[
+          { width: this._width, height: this._height },
+          { transform },
+        ]}
+        source={{ uri: image }}
+      />
+    )
+    if ( monochrome ) {
+      return <Grayscale>{Image()}</Grayscale>;
+    }
+    return Image();
+  }
+
   render() {
     let transform = [
       { perspective: 200 },
@@ -126,13 +144,7 @@ export default class TransformableImage extends React.Component {
                 onHandlerStateChange={this._onPinchHandlerStateChange}>
                 <Animated.View style={styles.container} collapsable={false}>
                   {this.props.image &&
-                    <Animated.Image
-                      style={[
-                        { width: this._width, height: this._height },
-                        { transform },
-                      ]}
-                      source={{ uri: this.props.image }}
-                    />
+                    this.renderImage(transform)
                   }
                 </Animated.View>
               </PinchGestureHandler>

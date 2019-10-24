@@ -23,6 +23,7 @@ export default class App extends React.Component {
     photoLoader: false,
     mirror: false,
     brightness: false,
+    monochrome: false,
   };
 
   constructor(props) {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, monochrome } = this.state;
 
     if (help) {
       return (
@@ -84,13 +85,14 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} />
+          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} monochrome={monochrome} />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           }
           <FloatingToolbar left={true}>
+            {!locked && <ActionButton onPress={this._monochrome} text={i18n.t("button_monochrome")} textPosition="right" iconName="md-sunny" />}
             {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
             {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
@@ -110,6 +112,10 @@ export default class App extends React.Component {
       await Brightness.useSystemBrightnessAsync();
     }
     this.state.brightness ? this.setState({ brightness: false }) : this.setState({ brightness: true });
+  }
+
+  _monochrome = () => {
+    this.state.monochrome ? this.setState({ monochrome: false }) : this.setState({ monochrome: true });
   }
 
   _mirror = () => {
