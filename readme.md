@@ -9,8 +9,17 @@ Free and Open Source Expo App that makes it easy to copy an image from the scree
 
 ## Build and Development
 
-- **Dev mode:** `yarn start`
-- **Build APK:** `expo build:android`
+### Dev mode
+```
+npm install
+npm start
+```
+Alternatively, you can use yarn instead of npm.
+
+### Build APK
+```
+expo build:android
+```
 
 
 ### Useful links
