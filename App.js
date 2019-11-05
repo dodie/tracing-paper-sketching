@@ -10,6 +10,7 @@ import i18n from './i18n/i18n';
 import * as Permissions from 'expo-permissions';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
+import Help from './help'
 
 
 export default class App extends React.Component {
@@ -36,17 +37,7 @@ export default class App extends React.Component {
     if (help) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', padding: 10 }}>
-            <Text style={{ fontWeight: 'bold', color: 'white', marginBottom: 5 }}>{i18n.t('tracing_paper')}</Text>
-            <Text style={{textAlign: 'center', color: 'white' }}>{i18n.t('tracing_paper_help')}</Text>
-
-            <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text={i18n.t('privacy_policy')} />
-
-            <View style={{ margin: 5 }}></View>
-            <ActionButtonWithText onPress={this._openLicenses} iconName="md-heart" text={i18n.t('licenses_credits')} />
-          </View>
-
+          <Help />
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
@@ -172,13 +163,5 @@ export default class App extends React.Component {
 
   _toMain = () => {
     this.setState({ help: false });
-  }
-
-  _openLegal = () => {
-    Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/legal.md");
-  }
-
-  _openLicenses = () => {
-    Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/licenses.md");
   }
 }
