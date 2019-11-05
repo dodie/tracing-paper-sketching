@@ -10,7 +10,7 @@ Free and Open Source Expo App that makes it easy to copy an image from the scree
 ## Build and Development
 
 ### Dev mode
-Requires NodeJS version >=12.0.0.
+Requires Node.js version >=12.0.0.
 
 ```
 npm install
