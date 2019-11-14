@@ -9,16 +9,37 @@ Free and Open Source Expo App that makes it easy to copy an image from the scree
 
 ## Build and Development
 
-### Dev mode
-Requires Node.js version >=12.0.0.
+
+### Requirements
+
+Requires Node.js version >=12.0.0 to build and run the development server.
+As an alternative, use Docker for local development.
+
+
+### Development on the host machine
 
 ```
 npm install
 npm start
 ```
-Alternatively, you can use yarn instead of npm.
+
+
+### Development on Docker
+
+Build the container (required for the first time only):
+```
+docker build -t expo-build .
+```
+
+Start devmode using the following command. Adapt the `REACT_NATIVE_PACKAGER_HOSTNAME` environment variable
+to match your IP address. (Required for react native builder, otherwise it would use the container's IP address.)
+```
+docker run -it -p 19000:19000 -p 19001:19001 -p 19002:19002 --env REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.102 -v $(pwd):/home/node/code expo-build
+```
+
 
 ### Build APK
+
 ```
 expo build:android
 ```
