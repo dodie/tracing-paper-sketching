@@ -44,6 +44,12 @@ docker run -it -p 19000:19000 -p 19001:19001 -p 19002:19002 --env REACT_NATIVE_P
 expo build:android
 ```
 
+To use a custom keystore:
+```
+expo build:android -c
+# Select option 2 and specify a keystore path, password, and alias.
+```
+
 
 ### Useful links
 
