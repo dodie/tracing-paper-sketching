@@ -12,6 +12,10 @@ We do not use third-party analytics tools. The App does not access a dedicated b
 2. Private data
 We do not collect any private information, since the App is available without authentication. We also does not track information regarding the opened images.
 
+For technical reasons the application accesses the following personal and device related information without actually storing or using them:
+- Advertising ID
+- Android Device ID
+
 
 Changes to the Privacy Policy
 =============================
