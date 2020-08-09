@@ -27,7 +27,7 @@
     },
     "android": {
       "package": "com.advancedweb.tracing_paper_sketching",
-      "versionCode": 12
+      "versionCode": 13
     }
   }
 }
