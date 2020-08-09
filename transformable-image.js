@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import Dimensions from 'Dimensions';
+import { Animated, Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {
   PanGestureHandler,
   PinchGestureHandler,
