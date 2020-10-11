@@ -1,7 +1,18 @@
 # Contributing
 
-Contributions are welcome! If you are looking for issues that can get you started with the development, see
+Thank you for considering to participate in the development of this application! Please read this guide then check
 [Issues marked with the help-wanted tag](https://github.com/dodie/tracing-paper-sketching/issues?q=is%3Aissue+label%3A%22help+wanted%22+is%3Aopen).
+
+
+## What is this application?
+
+The purpose of this app is to make it easer to copy an image from the screen to a physical paper:
+- select an image
+- align (zoom, rotate, pan) as you wish
+- lock the image
+- put a paper over the screen, grab a pencil and start tracing
+
+Check out the [Play Store page of the app](https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching) and install it on your Android device to get familiar with it.
 
 
 ## Prerequisites
