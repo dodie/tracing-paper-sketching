@@ -6,6 +6,8 @@ Contributions are welcome! If you are looking for issues that can get you starte
 
 ## Prerequisites
 
+If you know how Expo works, you are good to go, otherwise follow these steps:
+
 - Install the official [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=hu) on your Android Device.
   This is required to run your version of the App on your mobile easily.
 
