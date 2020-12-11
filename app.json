@@ -27,7 +27,8 @@
     },
     "android": {
       "package": "com.advancedweb.tracing_paper_sketching",
-      "versionCode": 13
+      "permissions": [ "CAMERA", "READ_EXTERNAL_STORAGE" ],
+      "versionCode": 14
     }
   }
 }
