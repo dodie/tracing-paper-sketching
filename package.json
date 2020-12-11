@@ -14,6 +14,7 @@
     "expo-image-picker": "~8.3.0",
     "expo-keep-awake": "~8.2.1",
     "expo-localization": "~8.2.1",
+    "expo-permissions": "^10.0.0",
     "i18n-js": "^3.3.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
