@@ -12,7 +12,8 @@ The purpose of this app is to make it easer to copy an image from the screen to 
 - lock the image
 - put a paper over the screen, grab a pencil and start tracing
 
-Check out the [Play Store page of the app](https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching) and install it on your Android device to get familiar with it.
+Check out the [Play Store page of the app](https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching)
+and install it on your Android device to get familiar with it.
 
 
 ## Prerequisites
@@ -25,27 +26,29 @@ If you know how Expo works, you are good to go, otherwise follow these steps:
 2. Install [Node.js](https://nodejs.org/) on your development environment.
   This is required to get the required dependencies and run a development version that you can access
   from your Android Device. 
-    - Popular alternatives to get NodeJS:
+    - Popular alternatives to **get Node.js**:
       - [Official installer](https://nodejs.org/en/download/)
       - [Node Version Manager](https://github.com/nvm-sh/nvm)
       - [asdf-vm](https://github.com/asdf-vm/asdf-nodejs)
-    - As an **alternative to installing NodeJS**, you can use the provided Dockerfile to create an image to can build the application
-    without the need to install Node.js locally, using [Docker](https://www.docker.com/).
+    - As an **alternative to installing Node.js**, you can use the provided Dockerfile to create an image to can build the
+    application without the need to install Node.js locally. In this case install [Docker](https://www.docker.com/).
 
 
 ## Step 1: Fork and clone the repo
 
 [Fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
-this repository, then [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) your fork.
+this repository then [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+your fork.
 
 ```
-git clone git@github.com:your-username/tracing-paper-sketching.git
+git clone https://github.com/YOUR-USERNAME/tracing-paper-sketching.git
 ```
 
 
 ## Step 2: Build the project
 
-Navigate to the project directory then use NPM to download the dependencies and build the project. NPM is installed with Node.js.
+Navigate to the project directory then use NPM to download the dependencies and build the project. NPM is installed
+with Node.js.
 
 ```
 cd tracing-paper-sketching
@@ -55,9 +58,9 @@ npm install
 
 ## Step 3: Run the development server
 
-Start the development server. When it's up and running it will display a QR code. You may have to wait a minute while
-your project bundles and loads for the first time. Once it's done, scan the QR code with the Expo App on your Android
-Device to run your version of the App on your mobile.
+Start the development server. When it's up and running it will display a QR code. You may have to wait a minute while your project
+bundles and loads for the first time. Once it's done, scan the QR code with the Expo App on your Android Device to run your version
+of the App on your mobile.
 
 ```
 npm start
@@ -89,14 +92,16 @@ App on your Android Device.
 Please use the following guidelines:
 
 - Try the changes on your device.
-- Make sure to respect existing formatting conventions. (Follow the same coding style as the code that you are modifying.)
+- Follow the same coding style as the code that you are modifying.
 - If necessary, update the documentation for the change you are making.
-- Write descriptive commit messages and add each logical change to a separate commit to make code review easier.
+- Write [descriptive commit messages](https://chiamakaikeanyi.dev/how-to-write-good-git-commit-messages/) and add each logical change
+  to a separate commit to make code review easier.
 
 
 ### Useful links
 
-The project relies on React Native and Expo. Here are some useful links to get started with them.
+The project relies on React Native and Expo. There are plenty of resources about this framework on the internet, but here are some useful links
+to get started.
 
 - https://facebook.github.io/react-native/docs/getting-started.html
 - https://docs.expo.io/versions/latest/distribution/building-standalone-apps
