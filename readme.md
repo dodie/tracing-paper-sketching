@@ -6,7 +6,7 @@ Free and Open Source Android app based on [Expo](https://expo.dev/) that makes i
 
 ![Tracing paper app](https://github.com/dodie/tracing-paper-sketching/blob/master/docs/IMG_20190104_204555.jpg "Tracing paper app")
 
-Just find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.
+Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.
 
 
 ## Contributing
