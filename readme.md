@@ -1,6 +1,6 @@
 # Tracing Paper Sketching
 
-[Get it from Play Store](https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching)
+[![Get it from Play Store](https://github.com/dodie/tracing-paper-sketching/blob/master/docs/playstore-icon.png)](https://play.google.com/store/apps/details?id=com.advancedweb.tracing_paper_sketching)
 
 Free and Open Source Android app based on [Expo](https://expo.dev/) that makes it easy to copy an image from the screen to a physical paper. 
 
