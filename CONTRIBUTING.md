@@ -19,13 +19,18 @@ Check out the [Play Store page of the app](https://play.google.com/store/apps/de
 
 If you know how Expo works, you are good to go, otherwise follow these steps:
 
-- Install the official [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=hu) on your Android Device.
-  This is required to run your version of the App on your mobile easily.
+1. Install the official [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=hu) on your Android Device.
+  This is required to run your version of the App on your mobile during development.
 
-- Install [Node.js](https://nodejs.org/) on your development environment.
-  The App is built with Node.js, it's required to get the required dependencies and run a development version that you can access
-  from your Android Device. As an alternative, you can use the provided Dockerfile to create an image to can build the application
-  without the need to install Node.js locally, using [Docker](https://www.docker.com/).
+2. Install [Node.js](https://nodejs.org/) on your development environment.
+  This is required to get the required dependencies and run a development version that you can access
+  from your Android Device. 
+    - Popular alternatives to get NodeJS:
+      - [Official installer](https://nodejs.org/en/download/)
+      - [Node Version Manager](https://github.com/nvm-sh/nvm)
+      - [asdf-vm](https://github.com/asdf-vm/asdf-nodejs)
+    - As an **alternative to installing NodeJS**, you can use the provided Dockerfile to create an image to can build the application
+    without the need to install Node.js locally, using [Docker](https://www.docker.com/).
 
 
 ## Step 1: Fork and clone the repo
