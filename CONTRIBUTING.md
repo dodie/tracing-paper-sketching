@@ -42,7 +42,7 @@ If you know how Expo works, you are good to go, otherwise follow these steps:
    ```
 
 An **alternative to installing Node.js locally** (steps 2-4) is to use the provided Dockerfile to create a builder image for the application.
-In this case install [Docker](https://www.docker.com/) instead of NodeJS and the NPM dependencies.
+In this case install [Docker](https://www.docker.com/) instead of Node.js and the NPM dependencies.
 
 
 ## Step 1: Fork and clone the repo
