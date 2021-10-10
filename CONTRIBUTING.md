@@ -33,6 +33,11 @@ If you know how Expo works, you are good to go, otherwise follow these steps:
     - As an **alternative to installing Node.js**, you can use the provided Dockerfile to create an image to can build the
     application without the need to install Node.js locally. In this case install [Docker](https://www.docker.com/).
 
+3. Install `expo-cli`
+  ```
+  `npm install -g expo-cli
+  ```
+
 
 ## Step 1: Fork and clone the repo
 
@@ -65,6 +70,9 @@ of the App on your mobile.
 ```
 npm start
 ```
+
+**Make sure that your smartphone can access the development server, e.g. by accessing the same network.**
+
 
 ## Alternative to Step 2 and Step 3: Development using Docker
 
