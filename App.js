@@ -7,7 +7,7 @@ import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
-import * as Permissions from 'expo-permissions';
+import { PermissionsAndroid } from 'react-native';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
 import Help from './help'
@@ -48,7 +48,7 @@ export default class App extends React.Component {
     if (!image && !camera) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <ActionButtonWithText onPress={this._pickImage} iconName="md-photos" text={i18n.t('pick_a_image')} />
+          <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
@@ -86,8 +86,8 @@ export default class App extends React.Component {
             {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-unlock" />}
-            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock" />}
+            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
+            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
           </FloatingToolbar>
         </View>
       );
@@ -131,8 +131,7 @@ export default class App extends React.Component {
   }
 
   _openCamera = async () => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    const camera = status === 'granted';
+    const camera = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA);
     this.setState({ camera }, () => {
       if (!this.state.camera) {
         ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);

@@ -30,8 +30,19 @@ If you know how Expo works, you are good to go, otherwise follow these steps:
       - [Official installer](https://nodejs.org/en/download/)
       - [Node Version Manager](https://github.com/nvm-sh/nvm)
       - [asdf-vm](https://github.com/asdf-vm/asdf-nodejs)
-    - As an **alternative to installing Node.js**, you can use the provided Dockerfile to create an image to can build the
-    application without the need to install Node.js locally. In this case install [Docker](https://www.docker.com/).
+
+3. Install `expo-cli`
+   ```
+   npm install -g expo-cli
+   ```
+
+4. Install a recent NPM:
+   ```
+   npm install -g npm
+   ```
+
+An **alternative to installing Node.js locally** (steps 2-4) is to use the provided Dockerfile to create a builder image for the application.
+In this case install [Docker](https://www.docker.com/) instead of Node.js and the NPM dependencies.
 
 
 ## Step 1: Fork and clone the repo
@@ -45,46 +56,42 @@ git clone https://github.com/YOUR-USERNAME/tracing-paper-sketching.git
 ```
 
 
-## Step 2: Build the project
+## Step 2: Run the development server
 
-Navigate to the project directory then use NPM to download the dependencies and build the project. NPM is installed
-with Node.js.
+Navigate to the project directory then use NPM to download the dependencies of the project:
 
 ```
 cd tracing-paper-sketching
 npm install
 ```
 
-
-## Step 3: Run the development server
-
-Start the development server. When it's up and running it will display a QR code. You may have to wait a minute while your project
-bundles and loads for the first time. Once it's done, scan the QR code with the Expo App on your Android Device to run your version
-of the App on your mobile.
+Then, start the development server:
 
 ```
 npm start
 ```
 
-## Alternative to Step 2 and Step 3: Development using Docker
+When it's up and running it will display a QR code. You may have to wait a minute while your project
+bundles and loads for the first time. 
+
+
+### Alternative using Docker
 
 If you don't have Node.js locally, you can use Docker to build and run the project.
 
-Build the container (required for the first time only):
-
 ```
-docker build -t expo-build .
-```
-
-Start devmode using the following command. Adapt the `REACT_NATIVE_PACKAGER_HOSTNAME` environment variable
-to match your IP address. (Required for react native builder, otherwise it would use the container's IP address.)
-
-```
-docker run -it -p 19000:19000 -p 19001:19001 -p 19002:19002 --env REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.102 -v $(pwd):/home/node/code expo-build
+cd tracing-paper-sketching
+./build.sh
 ```
 
-This command will start the development server. When it's running, it will display the QR code you can scan the Expo
-App on your Android Device.
+This command creates the builder image and runs the NPM commands required to start the development server.
+
+
+## Step 3. Launch the app on your Android Device
+
+Start the Expo Go App on your Android Device and scan the QR code. It will download and run the application.
+
+**Make sure that your smartphone and the development server are on the same network!**
 
 
 ## Step 4. Implement your changes
