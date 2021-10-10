@@ -87,14 +87,14 @@ cd tracing-paper-sketching
 This command creates the builder image and runs the NPM commands required to start the development server.
 
 
-## Step 3. Launch the app on your Android Device
+## Step 3: Launch the app on your Android Device
 
 Start the Expo Go App on your Android Device and scan the QR code. It will download and run the application.
 
 **Make sure that your smartphone and the development server are on the same network!**
 
 
-## Step 4. Implement your changes
+## Step 4: Implement your changes
 
 Please use the following guidelines:
 
@@ -116,7 +116,7 @@ to get started.
 - https://ionicons.com/cheatsheet.html
 
 
-## Step 5. Submit changes
+## Step 5: Submit changes
 
 Push your changes and submit a Pull Request. Now it's my turn to review your PR and get in touch with you. :)
 
