@@ -10,6 +10,7 @@ import i18n from './i18n/i18n';
 import { PermissionsAndroid } from 'react-native';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
+import { StatusBar } from 'expo-status-bar';
 import Help from './help'
 
 
@@ -41,6 +42,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     }
@@ -53,6 +55,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     } else if (!image && camera) {
@@ -68,7 +71,7 @@ export default class App extends React.Component {
             <FloatingToolbar>
               <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
             </FloatingToolbar>
-
+            <StatusBar style="hidden" />
           </View>
         </Camera>
       );
@@ -89,6 +92,7 @@ export default class App extends React.Component {
             {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
             {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     }
