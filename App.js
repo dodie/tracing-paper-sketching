@@ -78,7 +78,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} />
+          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
           {!locked &&
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
@@ -157,7 +157,7 @@ export default class App extends React.Component {
   }
 
   _resetImage = () => {
-    this.setState({ image: null });
+    this.setState({ image: null, brightness: false, mirror: false });
   }
 
   _toHelp = () => {
