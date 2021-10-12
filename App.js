@@ -11,6 +11,7 @@ import { PermissionsAndroid } from 'react-native';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
 import Help from './help'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default class App extends React.Component {
@@ -24,15 +25,39 @@ export default class App extends React.Component {
     photoLoader: false,
     mirror: false,
     brightness: false,
+    isNewUser: true
   };
 
   constructor(props) {
     super(props);
     this.cameraRef = React.createRef();
+    this.init();
+  }
+
+  async init() {
+    try {
+      const isNewUser = await AsyncStorage.getItem('isNewUser');
+      if (isNewUser !== null) {
+        this.setState({ isNewUser: false });
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser } = this.state;
+
+    if (isNewUser) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+          <Text style={{ textAlign: 'center', color: 'white' }}>
+            {i18n.t('onboarding_text')}
+          </Text>
+          <ActionButtonWithText onPress={this._readyToUse} text={i18n.t("start")}/>
+        </View>
+      );
+    }
 
     if (help) {
       return (
@@ -162,5 +187,11 @@ export default class App extends React.Component {
 
   _toMain = () => {
     this.setState({ help: false });
+  }
+
+  _readyToUse = () => {
+      this.setState({ isNewUser: false });
+      AsyncStorage.setItem('isNewUser');
+      this._toMain();
   }
 }
