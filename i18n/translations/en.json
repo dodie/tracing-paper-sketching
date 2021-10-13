@@ -1,5 +1,7 @@
 {
   "tracing_paper": "Tracing Paper",
+  "onboarding_text": "Hi there! 👋\n\nAre you ready to draw the perfect picture?\nIf yes, then pick an image and open it with the app.\nRotate, shrink or zoom to find the best alignment.\nLock the screen, put a paper over the display and start tracing.",
+  "start": "Let's draw!",
   "tracing_paper_help": "Copy an image from the screen to a physical paper. Find an image as a template. Rotate, shrink or zoom to find the perfect alignment. Lock the screen, put a paper over the display and start tracing.",
   "privacy_policy": "Privacy Policy",
   "licenses_credits": "Licenses, Credits",
