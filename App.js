@@ -10,7 +10,9 @@ import i18n from './i18n/i18n';
 import { PermissionsAndroid } from 'react-native';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
+import { StatusBar } from 'expo-status-bar';
 import Help from './help'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default class App extends React.Component {
@@ -24,15 +26,39 @@ export default class App extends React.Component {
     photoLoader: false,
     mirror: false,
     brightness: false,
+    isNewUser: true
   };
 
   constructor(props) {
     super(props);
     this.cameraRef = React.createRef();
+    this.init();
+  }
+
+  async init() {
+    try {
+      const isNewUser = await AsyncStorage.getItem('isNewUser');
+      if (isNewUser !== null) {
+        this.setState({ isNewUser: false });
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser } = this.state;
+
+    if (isNewUser) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+          <Text style={{ textAlign: 'center', color: 'white' }}>
+            {i18n.t('onboarding_text')}
+          </Text>
+          <ActionButtonWithText onPress={this._readyToUse} text={i18n.t("start")}/>
+        </View>
+      );
+    }
 
     if (help) {
       return (
@@ -41,6 +67,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     }
@@ -53,6 +80,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     } else if (!image && camera) {
@@ -68,14 +96,14 @@ export default class App extends React.Component {
             <FloatingToolbar>
               <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
             </FloatingToolbar>
-
+            <StatusBar style="hidden" />
           </View>
         </Camera>
       );
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} />
+          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
           {!locked &&
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
@@ -89,6 +117,7 @@ export default class App extends React.Component {
             {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
             {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
           </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
       );
     }
@@ -153,7 +182,7 @@ export default class App extends React.Component {
   }
 
   _resetImage = () => {
-    this.setState({ image: null });
+    this.setState({ image: null, brightness: false, mirror: false });
   }
 
   _toHelp = () => {
@@ -162,5 +191,11 @@ export default class App extends React.Component {
 
   _toMain = () => {
     this.setState({ help: false });
+  }
+
+  _readyToUse = () => {
+      this.setState({ isNewUser: false });
+      AsyncStorage.setItem('isNewUser');
+      this._toMain();
   }
 }
