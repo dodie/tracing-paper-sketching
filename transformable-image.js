@@ -13,6 +13,8 @@ export default class TransformableImage extends React.Component {
   dragRef = React.createRef();
   rotationRef = React.createRef();
   pinchRef = React.createRef();
+  minSize = 0.05;
+  maxSize = 6;
   constructor(props) {
     super(props);
     this._width = props.width;
@@ -74,9 +76,16 @@ export default class TransformableImage extends React.Component {
   };
   _onPinchHandlerStateChange = event => {
     if (event.nativeEvent.oldState === State.ACTIVE) {
-      this._lastScale *= event.nativeEvent.scale;
-      this._baseScale.setValue(this._lastScale);
-      this._pinchScale.setValue(1);
+      let newScale = this._lastScale * event.nativeEvent.scale
+      if (newScale <= this.minSize || newScale >= this.maxSize){
+        this._baseScale.setValue(this._lastScale);
+        this._pinchScale.setValue(1);
+      } else {
+        this._lastScale = newScale;
+        this._baseScale.setValue(this._lastScale);
+        this._pinchScale.setValue(1);
+      }
+
     }
   };
   _onDragGestureStateChange = event => {
