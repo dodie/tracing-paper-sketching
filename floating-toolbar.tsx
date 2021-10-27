@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import Styles from './styles';
 
-export default class FloatingToolbar extends Component {
-  constructor(props) {
+export type Props = {
+  top: number,
+  left: number
+}
+
+export default class FloatingToolbar extends Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 

@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo/vector-icons": "^12.0.0",
+    "@expo/vector-icons": "^12.0.5",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
@@ -37,7 +37,13 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "babel-preset-expo": "^8.4.1"
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.28",
+    "@types/react-native": "^0.65.5",
+    "@types/react-test-renderer": "^17.0.1",
+    "babel-preset-expo": "^8.4.1",
+    "typescript": "^4.4.3"
   },
   "private": true
 }
