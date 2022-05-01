@@ -49,7 +49,7 @@ export default class App extends React.Component {
   render() {
     let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser } = this.state;
 
-    if (isNewUser) {
+    if (false && isNewUser) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <Text style={{ textAlign: 'center', color: 'white' }}>
