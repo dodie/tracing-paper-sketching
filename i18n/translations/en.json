@@ -16,6 +16,7 @@
   "button_help": "help",
   "button_takephoto": "take photo",
   "button_mirror": "mirror",
+  "button_invertBackground": "background",
   "button_lock": "lock",
   "button_unlock": "unlock",
   "button_contrast": "contrast",

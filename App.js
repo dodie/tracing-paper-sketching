@@ -25,6 +25,7 @@ export default class App extends React.Component {
     camera: null,
     photoLoader: false,
     mirror: false,
+    invertBackground: false,
     brightness: false,
     isNewUser: true
   };
@@ -47,11 +48,11 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser } = this.state;
 
     if (false && isNewUser) {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: backgroundColor }}>
           <Text style={{ textAlign: 'center', color: 'white' }}>
             {i18n.t('onboarding_text')}
           </Text>
@@ -67,7 +68,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
-          <StatusBar style="hidden" hidden={true} />
+          <StatusBar hidden={true} />
         </View>
       );
     }
@@ -80,7 +81,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
-          <StatusBar style="hidden" hidden={true} />
+          <StatusBar hidden={true} />
         </View>
       );
     } else if (!image && camera) {
@@ -96,13 +97,13 @@ export default class App extends React.Component {
             <FloatingToolbar>
               <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
             </FloatingToolbar>
-            <StatusBar style="hidden" hidden={true} />
+            <StatusBar hidden={true} />
           </View>
         </Camera>
       );
     } else {
       return (
-        <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
           <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
           {!locked &&
             <FloatingToolbar top={true} left={true}>
@@ -111,13 +112,14 @@ export default class App extends React.Component {
           }
           <FloatingToolbar left={true}>
             {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
+            {!locked && <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" />}
             {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
           <FloatingToolbar>
             {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
             {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
           </FloatingToolbar>
-          <StatusBar style="hidden" hidden={true} />
+          <StatusBar hidden={true} />
         </View>
       );
     }
@@ -134,6 +136,10 @@ export default class App extends React.Component {
 
   _mirror = () => {
     this.state.mirror ? this.setState({ mirror: false }) : this.setState({ mirror: true });
+  }
+
+  _invertBackground = () => {
+    this.state.invertBackground ? this.setState({ invertBackground: false }) : this.setState({ invertBackground: true });
   }
 
   _lock = () => {
