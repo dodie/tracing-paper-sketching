@@ -123,7 +123,14 @@ export default class App extends React.Component {
         </View>
       );
     } else if (!image && !camera && textAsImage) {
-      
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+          <TextInputBox text={''} onSubmitPress={this._setText}/>
+          <FloatingToolbar top={true} left={true}>
+            <ActionButton onPress={this._closeTextInputScreen} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+          </FloatingToolbar>
+        </View>
+      );
     }
   }
 
@@ -183,6 +190,18 @@ export default class App extends React.Component {
 
   _closeCamera = () => {
     this.setState({ camera: false });
+  }
+
+  _openTextInputScreen = () => {
+    this.setState({ textAsImage: true});
+  }
+
+  _closeTextInputScreen = () => {
+    this.setState({textAsImage: false});
+  }
+
+  _setText = (textValue) => {
+    console.log('HERE');
   }
 
   _resetImage = () => {
