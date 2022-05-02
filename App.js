@@ -51,7 +51,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, text, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
+    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
 
     if (isNewUser) {
       return (
@@ -244,6 +244,13 @@ export default class App extends React.Component {
     this.setState({
       text: null
     });
+  }
+
+  _setFont = (fontValue) => {
+    this.setState({
+      textFont: fontValue
+    });
+    console.log(fontValue);
   }
 
   _resetImage = () => {
