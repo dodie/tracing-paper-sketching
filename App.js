@@ -6,6 +6,7 @@ import FloatingToolbar from './floating-toolbar';
 import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
 import TextInputBox from './text-input-box';
+import FontDropDown from './font-drop-down'
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
 import { PermissionsAndroid } from 'react-native';
@@ -130,6 +131,7 @@ export default class App extends React.Component {
         return (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
             <TextInputBox text={''} onSubmitPress={this._setText}/>
+            <FontDropDown textFont={textFont} onSelect={this._setFont}/>
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
