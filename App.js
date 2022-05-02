@@ -20,6 +20,7 @@ export default class App extends React.Component {
   state = {
     image: null,
     text: null,
+    textFont: null,
     width: null,
     height: null,
     locked: false,
@@ -138,7 +139,7 @@ export default class App extends React.Component {
       else {
         return (
           <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
+          <TrasformableImage mirror={mirror} text={text} image={image} textFont={textFont} width={width} height={height} locked={locked} brightness={brightness}/>
           {!locked &&
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
