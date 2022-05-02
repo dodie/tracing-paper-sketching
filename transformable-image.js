@@ -111,7 +111,9 @@ export default class TransformableImage extends React.Component {
       { scale: this._scale },
       { rotate: this._rotateStr },
     ];
-    this.props.mirror ? transform.push({ rotateY: this._rotateY }) : null;
+    if (this.props.mirror) {
+      transform.push({ scaleX: -1 });
+    }
     return (
       <PanGestureHandler
         enabled={!this.props.locked}
