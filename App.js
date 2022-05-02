@@ -5,6 +5,7 @@ import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
 import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
+import TextInputBox from './text-input-box';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
 import { PermissionsAndroid } from 'react-native';
