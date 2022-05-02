@@ -19,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default class App extends React.Component {
   state = {
     image: null,
+    text: null,
     width: null,
     height: null,
     locked: false,
@@ -79,6 +80,7 @@ export default class App extends React.Component {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
+          <ActionButtonWithText onPress={this._openTextInputScreen} iconName="text" text={i18n.t('use_text_as_image')} />
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
@@ -201,7 +203,10 @@ export default class App extends React.Component {
   }
 
   _setText = (textValue) => {
-    console.log('HERE');
+    this.setState({
+      text: textValue
+    });
+    // console.log(this.state.text);
   }
 
   _resetImage = () => {
