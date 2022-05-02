@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Button, Image, Text, View, Linking, ActivityIndicator, ToastAndroid } from 'react-native';
+import React from 'react';
+import { Text, View, ActivityIndicator, ToastAndroid } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
