@@ -50,7 +50,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
+    let { image, text, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
 
     if (isNewUser) {
       return (
@@ -80,7 +80,7 @@ export default class App extends React.Component {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
-          <ActionButtonWithText onPress={this._openTextInputScreen} iconName="text" text={i18n.t('use_text_as_image')} />
+          <ActionButtonWithText onPress={this._openTextAsImage} iconName="text" text={i18n.t('use_text_as_image')} />
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
@@ -125,17 +125,40 @@ export default class App extends React.Component {
         </View>
       );
     } else if (!image && !camera && textAsImage) {
-      return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <TextInputBox text={''} onSubmitPress={this._setText}/>
-          <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._closeTextInputScreen} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+      if (text === null) {
+        return (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+            <TextInputBox text={''} onSubmitPress={this._setText}/>
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            </FloatingToolbar>
+          </View>
+        );
+      }
+      else {
+        return (
+          <View style={{ flex: 1, backgroundColor: 'black' }}>
+          <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
+          {!locked &&
+            <FloatingToolbar top={true} left={true}>
+              <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            </FloatingToolbar>
+          }
+          <FloatingToolbar left={true}>
+            {!locked && <ActionButton onPress={this._resetText} text={i18n.t("change_text")} textPosition="right" iconName="text" />}
+            {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
+            {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
           </FloatingToolbar>
+          <FloatingToolbar>
+            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
+            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
+          </FloatingToolbar>
+          <StatusBar style="hidden" />
         </View>
-      );
+        );
+      }
     }
   }
-
   _brightness = async () => {
     if (!this.state.brightness) {
       await Brightness.setBrightnessAsync(1);
@@ -194,19 +217,32 @@ export default class App extends React.Component {
     this.setState({ camera: false });
   }
 
-  _openTextInputScreen = () => {
-    this.setState({ textAsImage: true});
+  _openTextAsImage = () => {
+    this.setState({ textAsImage: true });
   }
 
-  _closeTextInputScreen = () => {
-    this.setState({textAsImage: false});
+  _closeTextAsImage = () => {
+    this.setState({ textAsImage: false, text: null});
   }
 
   _setText = (textValue) => {
+    if (textValue.text === "") {
+      this.setState({
+        text: null
+      });
+      return;
+    };
+
     this.setState({
-      text: textValue
+      text: textValue.text
     });
     // console.log(this.state.text);
+  }
+
+  _resetText = () => {
+    this.setState({
+      text: null
+    });
   }
 
   _resetImage = () => {

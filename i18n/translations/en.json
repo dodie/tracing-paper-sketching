@@ -10,6 +10,7 @@
   "submit" : "Submit",
   "camera": "Camera",
   "enter_text": "Text",
+  "change_text": "change Text",
   "toast_screen_locked": "Screen locked",
   "toast_screen_unlocked": "Screen unlocked",
   "toast_image_loaded": "Image loaded",

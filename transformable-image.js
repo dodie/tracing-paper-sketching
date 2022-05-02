@@ -142,6 +142,20 @@ export default class TransformableImage extends React.Component {
                       source={{ uri: this.props.image }}
                     />
                   }
+
+                  {this.props.text &&
+                    <Animated.Text 
+                    style={[
+                      { width: this._width,
+                        height: this._height,
+                        color: 'white',
+                        textAlign: 'center',
+                        fontSize: 50
+                      },
+                      { transform },
+                    ]}>
+                    {this.props.text}
+                 </Animated.Text>}
                 </Animated.View>
               </PinchGestureHandler>
             </Animated.View>
