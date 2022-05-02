@@ -26,7 +26,8 @@ export default class App extends React.Component {
     photoLoader: false,
     mirror: false,
     brightness: false,
-    isNewUser: true
+    isNewUser: true,
+    textAsImage: null
   };
 
   constructor(props) {
@@ -47,7 +48,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser } = this.state;
+    let { image, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
 
     if (isNewUser) {
       return (
@@ -72,7 +73,7 @@ export default class App extends React.Component {
       );
     }
 
-    if (!image && !camera) {
+    if (!image && !camera && !textAsImage) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
@@ -83,7 +84,7 @@ export default class App extends React.Component {
           <StatusBar style="hidden" />
         </View>
       );
-    } else if (!image && camera) {
+    } else if (!image && camera && !textAsImage) {
       return (
         <Camera ref={this.cameraRef}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -100,7 +101,7 @@ export default class App extends React.Component {
           </View>
         </Camera>
       );
-    } else {
+    } else if (image && !camera && !textAsImage) {
       return (
         <View style={{ flex: 1, backgroundColor: 'black' }}>
           <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
@@ -120,6 +121,8 @@ export default class App extends React.Component {
           <StatusBar style="hidden" />
         </View>
       );
+    } else if (!image && !camera && textAsImage) {
+      
     }
   }
 
