@@ -20,7 +20,7 @@ export default class App extends React.Component {
   state = {
     image: null,
     text: null,
-    textFont: null,
+    textFont: 'Roboto',
     width: null,
     height: null,
     locked: false,
