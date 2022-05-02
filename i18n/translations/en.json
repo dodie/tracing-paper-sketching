@@ -6,6 +6,8 @@
   "privacy_policy": "Privacy Policy",
   "licenses_credits": "Licenses, Credits",
   "pick_a_image": "Pick an image",
+  "use_text_as_image" : "Use text as image",
+  "submit" : "Submit",
   "camera": "Camera",
   "enter_text": "Text",
   "toast_screen_locked": "Screen locked",
