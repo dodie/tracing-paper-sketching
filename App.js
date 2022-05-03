@@ -5,6 +5,8 @@ import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
 import ActionButton from './action-button';
 import ActionButtonWithText from './action-button-with-text';
+import TextInputBox from './text-input-box';
+import FontDropDown from './font-drop-down'
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
 import { PermissionsAndroid } from 'react-native';
@@ -18,6 +20,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default class App extends React.Component {
   state = {
     image: null,
+    text: null,
+    textFont: 'Roboto',
     width: null,
     height: null,
     locked: false,
@@ -27,7 +31,8 @@ export default class App extends React.Component {
     mirror: false,
     invertBackground: false,
     brightness: false,
-    isNewUser: true
+    isNewUser: true,
+    textAsImage: null
   };
 
   constructor(props) {
@@ -48,7 +53,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser } = this.state;
+    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
 
     if (false && isNewUser) {
       return (
@@ -73,18 +78,19 @@ export default class App extends React.Component {
       );
     }
 
-    if (!image && !camera) {
+    if (!image && !camera && !textAsImage) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
           <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
+          <ActionButtonWithText onPress={this._openTextAsImage} iconName="text" text={i18n.t('use_text_as_image')} />
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
           <StatusBar hidden={true} />
         </View>
       );
-    } else if (!image && camera) {
+    } else if (!image && camera && !textAsImage) {
       return (
         <Camera ref={this.cameraRef}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -101,30 +107,40 @@ export default class App extends React.Component {
           </View>
         </Camera>
       );
-    } else {
-      return (
-        <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
-          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
-          {!locked &&
+    } else if ( (image || textAsImage) && !camera ) {
+      if (text === null && textAsImage) {
+        return (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+            <TextInputBox text={''} onSubmitPress={this._setText} />
+            <FontDropDown textFont={textFont} onSelect={this._setFont} />
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
+              <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
-          }
-          <FloatingToolbar left={true}>
-            {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />}
-            {!locked && <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />}
-            {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />}
-          </FloatingToolbar>
-          <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" lightMode={invertBackground}/>}
-            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" lightMode={invertBackground} />}
-          </FloatingToolbar>
-          <StatusBar hidden={true} />
-        </View>
-      );
+          </View>
+        );
+      } else {
+        return (
+          <View style={{ flex: 1, backgroundColor: 'black' }}>
+            <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} />
+            {!locked &&
+              <FloatingToolbar top={true} left={true}>
+                <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+              </FloatingToolbar>
+            }
+            <FloatingToolbar left={true}>
+              {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
+              {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
+            </FloatingToolbar>
+            <FloatingToolbar>
+              {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
+              {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
+            </FloatingToolbar>
+            <StatusBar style="hidden" />
+          </View>
+        );
+      }
     }
   }
-
   _brightness = async () => {
     if (!this.state.brightness) {
       await Brightness.setBrightnessAsync(1);
@@ -187,8 +203,43 @@ export default class App extends React.Component {
     this.setState({ camera: false });
   }
 
-  _resetImage = () => {
-    this.setState({ image: null, brightness: false, mirror: false });
+  _openTextAsImage = () => {
+    this.setState({ textAsImage: true });
+  }
+
+  _closeTextAsImage = () => {
+    this.setState({ textAsImage: false, text: null});
+  }
+
+  _setText = (textValue) => {
+    if (textValue.text === "") {
+      this.setState({
+        text: null
+      });
+      return;
+    };
+
+    this.setState({
+      text: textValue.text
+    });
+    // console.log(this.state.text);
+  }
+
+  _resetText = () => {
+    this.setState({
+      text: null
+    });
+  }
+
+  _setFont = (fontValue) => {
+    this.setState({
+      textFont: fontValue
+    });
+    console.log(fontValue);
+  }
+
+  _resetImageAndText = () => {
+    this.setState({ image: null, brightness: false, mirror: false, text: null });
   }
 
   _toHelp = () => {
