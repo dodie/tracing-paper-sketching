@@ -14,15 +14,25 @@ export default class ActionButton extends Component {
   }
 
   render() {
-    const { onPress, iconName, textPosition, text } = this.props;
+    const { onPress, iconName, textPosition, text, lightMode } = this.props;
+
+
     return (
       <TouchableOpacity onPress={onPress}>
         <View style={styles.buttonContainer}>
-            {text && textPosition === 'left' && this.renderButtonText()}
+            {text && textPosition === 'left' &&
+              <View style={{backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25}}>
+                <Text style={{paddingHorizontal: 10}}>{this.renderButtonText()}</Text>
+              </View>
+            }
             <View style={styles.button}>
                 <Ionicons name={iconName} size={24} color="#444" />
             </View>
-            {text && textPosition === 'right' && this.renderButtonText()}
+            {text && textPosition === 'right' &&
+              <View style={{ backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25}}>
+                <Text style={{paddingHorizontal: 10}}>{this.renderButtonText()}</Text>
+              </View>
+            }
         </View>
       </TouchableOpacity>
     );

@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Button, Image, Text, View, Linking, ActivityIndicator, ToastAndroid } from 'react-native';
+import React from 'react';
+import { Text, View, ActivityIndicator, ToastAndroid } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
@@ -29,6 +29,7 @@ export default class App extends React.Component {
     camera: null,
     photoLoader: false,
     mirror: false,
+    invertBackground: false,
     brightness: false,
     isNewUser: true,
     textAsImage: null
@@ -54,9 +55,9 @@ export default class App extends React.Component {
   render() {
     let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
 
-    if (isNewUser) {
+    if (false && isNewUser) {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: backgroundColor }}>
           <Text style={{ textAlign: 'center', color: 'white' }}>
             {i18n.t('onboarding_text')}
           </Text>
@@ -72,7 +73,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
-          <StatusBar style="hidden" />
+          <StatusBar hidden={true} />
         </View>
       );
     }
@@ -86,7 +87,7 @@ export default class App extends React.Component {
           <FloatingToolbar top={true}>
             <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
           </FloatingToolbar>
-          <StatusBar style="hidden" />
+          <StatusBar hidden={true} />
         </View>
       );
     } else if (!image && camera && !textAsImage) {
@@ -102,7 +103,7 @@ export default class App extends React.Component {
             <FloatingToolbar>
               <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
             </FloatingToolbar>
-            <StatusBar style="hidden" />
+            <StatusBar hidden={true} />
           </View>
         </Camera>
       );
@@ -151,6 +152,10 @@ export default class App extends React.Component {
 
   _mirror = () => {
     this.state.mirror ? this.setState({ mirror: false }) : this.setState({ mirror: true });
+  }
+
+  _invertBackground = () => {
+    this.state.invertBackground ? this.setState({ invertBackground: false }) : this.setState({ invertBackground: true });
   }
 
   _lock = () => {
