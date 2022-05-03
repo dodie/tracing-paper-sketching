@@ -121,17 +121,19 @@ export default class App extends React.Component {
       } else {
         return (
           <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
-            <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} />
+            <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} lightMode={invertBackground} textFont={textFont} />
             {!locked &&
               <FloatingToolbar top={true} left={true}>
                 <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
               </FloatingToolbar>
             }
-            <FloatingToolbar left={true}>
-              {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />}
-              {!locked && <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />}
-              {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />}
-            </FloatingToolbar>
+            {!locked &&
+              <FloatingToolbar left={true}>
+                <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />
+                <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />
+                <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />
+              </FloatingToolbar>
+            }
             <FloatingToolbar>
               {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" lightMode={invertBackground} />}
               {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" lightMode={invertBackground} />}
@@ -223,7 +225,6 @@ export default class App extends React.Component {
     this.setState({
       text: textValue.text
     });
-    // console.log(this.state.text);
   }
 
   _resetText = () => {
@@ -236,7 +237,6 @@ export default class App extends React.Component {
     this.setState({
       textFont: fontValue
     });
-    console.log(fontValue);
   }
 
   _resetImageAndText = () => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableHighlightBase } from 'react-native';
+import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Styles from './styles';
 import i18n from './i18n/i18n';
@@ -12,30 +12,38 @@ export default class FontDropDown extends Component {
     };
   }
 
-
   render() {
+    const fonts = [
+      "monospace",
+      "normal",
+      "notoserif",
+      "Roboto",
+      "sans-serif",
+      "sans-serif-light",
+      "sans-serif-thin",
+      "sans-serif-condensed",
+      "sans-serif-medium",
+      "serif"
+    ];
     return (
       <View style={styles.view}>
         <Text style={styles.text}>
-          Selected Font: 
+          {i18n.t('font')}
         </Text>
         <Picker
           selectedValue={this.state.selectedFont}
           themeVariant={'dark'}
           style={styles.picker}
-          onValueChange={(itemValue, itemIndex) => {
+          onValueChange={(itemValue) => {
             this.setState({
               selectedFont: itemValue
             });
             this.props.onSelect(itemValue);
           }
-          
           }>
-          <Picker.Item label="roboto" value="Roboto" style={styles.pickerItem}/>
-          <Picker.Item label="serif" value="serif" style={styles.pickerItem}/>
-          <Picker.Item label="monospace" value="monospace" style={styles.pickerItem} />
-          <Picker.Item label="sans serif" value="sans-serif" style={styles.pickerItem} />
-          <Picker.Item label="notoserif" value="notoserif" style={styles.pickerItem} />
+            {fonts.map(font => {
+              return <Picker.Item label={font} value={font} style={{fontFamily: font}}/>
+            })}
         </Picker>
       </View>
     );

@@ -7,16 +7,16 @@ import i18n from './i18n/i18n';
 export default class TextInputBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = { text: 'Hello!' };
   }
-
 
   render() {
     return (
       <View>
         <View style={styles.container}>
-          <Text style={styles.text}>Enter Text for displaying as an image: </Text>
+          <Text style={styles.text}>{i18n.t("enter_text")}</Text>
           <TextInput
+            value={this.state.text}
             multiline={true}
             numberOfLines={10}
             style={styles.input}

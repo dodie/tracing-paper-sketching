@@ -154,7 +154,7 @@ export default class TransformableImage extends React.Component {
                       style={[
                         { width: this._width,
                           height: this._height,
-                          color: 'white',
+                          color: this.props.lightMode ? 'black' : 'white',
                           textAlign: 'center',
                           fontSize: 50,
                           fontFamily: this.props.textFont
