@@ -53,7 +53,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, brightness, isNewUser, textAsImage } = this.state;
+    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage } = this.state;
 
     if (false && isNewUser) {
       return (
@@ -120,22 +120,23 @@ export default class App extends React.Component {
         );
       } else {
         return (
-          <View style={{ flex: 1, backgroundColor: 'black' }}>
+          <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
             <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} />
             {!locked &&
               <FloatingToolbar top={true} left={true}>
-                <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+                <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
               </FloatingToolbar>
             }
             <FloatingToolbar left={true}>
-              {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
-              {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
+              {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />}
+              {!locked && <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />}
+              {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />}
             </FloatingToolbar>
             <FloatingToolbar>
-              {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
-              {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
+              {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" lightMode={invertBackground} />}
+              {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" lightMode={invertBackground} />}
             </FloatingToolbar>
-            <StatusBar style="hidden" />
+            <StatusBar hidden={true} />
           </View>
         );
       }
