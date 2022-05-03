@@ -9,13 +9,12 @@ import TextInputBox from './text-input-box';
 import FontDropDown from './font-drop-down'
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
-import { PermissionsAndroid } from 'react-native';
 import Camera from './Camera';
 import * as Brightness from 'expo-brightness';
 import { StatusBar } from 'expo-status-bar';
 import Help from './help'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { Camera as CameraComp } from 'expo-camera';
 
 export default class App extends React.Component {
   state = {
@@ -146,6 +145,7 @@ export default class App extends React.Component {
   }
   _brightness = async () => {
     if (!this.state.brightness) {
+      
       await Brightness.setBrightnessAsync(1);
     } else {
       await Brightness.useSystemBrightnessAsync();
@@ -185,8 +185,8 @@ export default class App extends React.Component {
   }
 
   _openCamera = async () => {
-    const camera = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA);
-    this.setState({ camera }, () => {
+    const { status } = await CameraComp.requestCameraPermissionsAsync();
+    this.setState({ camera: status === 'granted' }, () => {
       if (!this.state.camera) {
         ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);
       }
