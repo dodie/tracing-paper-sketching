@@ -255,8 +255,8 @@ export default class App extends React.Component {
     console.log(fontValue);
   }
 
-  _resetImage = () => {
-    this.setState({ image: null, brightness: false, mirror: false });
+  _resetImageAndText = () => {
+    this.setState({ image: null, brightness: false, mirror: false, text: null });
   }
 
   _toHelp = () => {
