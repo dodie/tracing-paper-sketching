@@ -106,58 +106,36 @@ export default class App extends React.Component {
           </View>
         </Camera>
       );
-    } else if (image && !camera && !textAsImage) {
-      return (
-        <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} image={image} width={width} height={height} locked={locked} brightness={brightness}/>
-          {!locked &&
-            <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._resetImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
-            </FloatingToolbar>
-          }
-          <FloatingToolbar left={true}>
-            {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
-            {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
-          </FloatingToolbar>
-          <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
-            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
-          </FloatingToolbar>
-          <StatusBar style="hidden" />
-        </View>
-      );
-    } else if (!image && !camera && textAsImage) {
-      if (text === null) {
+    } else if ( (image || textAsImage) && !camera ) {
+      if (text === null && textAsImage) {
         return (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-            <TextInputBox text={''} onSubmitPress={this._setText}/>
-            <FontDropDown textFont={textFont} onSelect={this._setFont}/>
+            <TextInputBox text={''} onSubmitPress={this._setText} />
+            <FontDropDown textFont={textFont} onSelect={this._setFont} />
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           </View>
         );
-      }
-      else {
+      } else {
         return (
           <View style={{ flex: 1, backgroundColor: 'black' }}>
-          <TrasformableImage mirror={mirror} text={text} image={image} textFont={textFont} width={width} height={height} locked={locked} brightness={brightness}/>
-          {!locked &&
-            <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} />
+            {!locked &&
+              <FloatingToolbar top={true} left={true}>
+                <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+              </FloatingToolbar>
+            }
+            <FloatingToolbar left={true}>
+              {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
+              {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
             </FloatingToolbar>
-          }
-          <FloatingToolbar left={true}>
-            {!locked && <ActionButton onPress={this._resetText} text={i18n.t("change_text")} textPosition="right" iconName="text" />}
-            {!locked && <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" />}
-            {!locked && <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" />}
-          </FloatingToolbar>
-          <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
-            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
-          </FloatingToolbar>
-          <StatusBar style="hidden" />
-        </View>
+            <FloatingToolbar>
+              {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" />}
+              {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" />}
+            </FloatingToolbar>
+            <StatusBar style="hidden" />
+          </View>
         );
       }
     }
