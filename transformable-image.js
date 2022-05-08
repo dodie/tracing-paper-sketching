@@ -47,11 +47,7 @@ export default class TransformableImage extends React.Component {
     this._rotate = new Animated.Value(0);
     this._rotateStr = this._rotate.interpolate({
       inputRange: [-100, 100],
-      outputRange: ['-100rad', '100rad'],
-    });
-    this._rotateY = this._rotate.interpolate({
-      inputRange: [0, 180],
-      outputRange: ['180deg', '360deg'],
+      outputRange: [(-100 + this.props.rotationOffset) + 'rad', (100 + this.props.rotationOffset) + 'rad'],
     });
     this._lastRotate = 0;
     this._onRotateGestureEvent = Animated.event(
