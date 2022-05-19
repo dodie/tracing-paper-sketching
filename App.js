@@ -251,12 +251,6 @@ export default class App extends React.Component {
     });
   }
 
-  _resetText = () => {
-    this.setState({
-      text: null
-    });
-  }
-
   _setFont = (fontValue) => {
     this.setState({
       textFont: fontValue

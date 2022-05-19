@@ -160,7 +160,6 @@ export default class TransformableImage extends React.Component {
                       <Animated.Text 
                         style={[
                           { width: this._width,
-                            height: this._height,
                             color: this.props.lightMode ? 'black' : 'white',
                             textAlign: 'center',
                             fontSize: 50,

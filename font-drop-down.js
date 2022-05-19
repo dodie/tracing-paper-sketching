@@ -42,7 +42,7 @@ export default class FontDropDown extends Component {
           }
           }>
             {fonts.map(font => {
-              return <Picker.Item label={font} value={font} style={{fontFamily: font}}/>
+              return <Picker.Item key={font + "_font"} label={font} value={font} style={{fontFamily: font}}/>
             })}
         </Picker>
       </View>
