@@ -18,5 +18,14 @@
     "button_unlock": "desbloquear",
     "button_contrast": "contraste",
     "button_brightness": "brillo",
-    "button_monochrome": "monocromo"
+    "button_monochrome": "monocromo",
+
+    "use_text_as_image": "texto",
+    "submit": "entregar",
+    "font": "Fuente",
+    "button_invertBackground": "antecedentes",
+    "button_rotate": "girar",
+    "toast_brightness_to_max": "Usando el brillo máximo",
+    "toast_brightness_already_at_max": "Brillo ya al máximo",
+    "toast_brightness_to_default": "Brillo restaurado"
 }

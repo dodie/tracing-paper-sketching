@@ -17,5 +17,14 @@
   "button_unlock": "Entsperren",
   "button_contrast": "Kontrast",
   "button_brightness": "Helligkeit",
-  "button_monochrome": "Monochrom"
+  "button_monochrome": "Monochrom",
+  "use_text_as_image": "Text",
+  "submit": "Einreichen",
+  "enter_text": "Text",
+  "font": "Schriftart",
+  "button_invertBackground": "Hintergrund",
+  "button_rotate": "drehen",
+  "toast_brightness_to_max": "Maximale Helligkeit verwenden",
+  "toast_brightness_already_at_max": "Helligkeit bereits auf Maximum",
+  "toast_brightness_to_default": "Helligkeit wiederhergestellt"
 }

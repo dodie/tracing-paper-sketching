@@ -23,5 +23,8 @@
 	"button_monochrome": "Monochrome",
 	"toast_brightness_to_max": "Maximum fényerő",
 	"toast_brightness_already_at_max": "A fényerő már maximumon van",
-	"toast_brightness_to_default": "Fényerő visszaállítva"
+	"toast_brightness_to_default": "Fényerő visszaállítva",
+	"use_text_as_image": "Szöveg",
+    "submit": "Tovább",
+    "enter_text": "Szöveg"
 }

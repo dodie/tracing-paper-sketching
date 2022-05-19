@@ -17,5 +17,16 @@
   "button_unlock": "déverrouiller",
   "button_contrast": "contraste",
   "button_brightness": "luminosité",
-  "button_monochrome": "monochrome"
+  "button_monochrome": "monochrome",
+
+  "use_text_as_image": "Texte",
+  "submit": "Soumettre",
+  "enter_text": "Texte",
+  "font": "Police de caractère",
+  "button_invertBackground": "fond",
+  "button_rotate": "tourner",
+  "toast_brightness_to_max": "Utilisation de la luminosité maximale",
+  "toast_brightness_already_at_max": "Luminosité déjà au maximum",
+  "toast_brightness_to_default": "Luminosité restaurée"
+
 }

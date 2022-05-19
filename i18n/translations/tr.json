@@ -18,5 +18,13 @@
   "button_unlock": "kilidi aç",
   "button_contrast": "kontrast",
   "button_brightness": "parlaklık",
-  "button_monochrome": "tek renk"
+  "button_monochrome": "tek renk",
+  "use_text_as_image": "Metin",
+  "submit": "Göndermek",
+  "font": "Yazı tipi",
+  "button_invertBackground": "arka fon",
+  "button_rotate": "döndürmek",
+  "toast_brightness_to_max": "Maksimum parlaklığı kullanma",
+  "toast_brightness_already_at_max": "Parlaklık zaten maksimumda",
+  "toast_brightness_to_default": "Parlaklık geri yüklendi"
 }

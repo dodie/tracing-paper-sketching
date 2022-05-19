@@ -18,7 +18,15 @@
     "button_unlock": "ಅನ್ಲಾಕ್ ಮಾಡಿ",
     "button_contrast": "ಕಾಂಟ್ರಾಸ್ಟ್",
     "button_brightness": "ಹೊಳಪು",
-    "button_monochrome": "ಏಕವರ್ಣದ"
+    "button_monochrome": "ಏಕವರ್ಣದ",
+    "use_text_as_image": "ಪಠ್ಯ",
+    "submit": "ಸಲ್ಲಿಸು",
+    "font": "ಫಾಂಟ್",
+    "button_invertBackground": "ಹಿನ್ನೆಲೆ",
+    "button_rotate": "ತಿರುಗಿಸಿ",
+    "toast_brightness_to_max": "ಗರಿಷ್ಠ ಹೊಳಪನ್ನು ಬಳಸುವುದು",
+    "toast_brightness_already_at_max": "ಹೊಳಪು ಈಗಾಗಲೇ ಗರಿಷ್ಠವಾಗಿದೆ",
+    "toast_brightness_to_default": "ಹೊಳಪನ್ನು ಪುನಃಸ್ಥಾಪಿಸಲಾಗಿದೆ"
   }
   
   

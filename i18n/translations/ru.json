@@ -18,5 +18,13 @@
   "button_unlock": "Разблокировать",
   "button_contrast": "Контраст",
   "button_brightness": "Яркость",
-  "button_monochrome": "Монохром"
+  "button_monochrome": "Монохром",
+  "use_text_as_image": "Текст",
+  "submit": "Представлять на рассмотрение",
+  "font": "Шрифт",
+  "button_invertBackground": "фон",
+  "button_rotate": "вращать",
+  "toast_brightness_to_max": "Использование максимальной яркости",
+  "toast_brightness_already_at_max": "Яркость уже на максимуме",
+  "toast_brightness_to_default": "Яркость восстановлена"
 }

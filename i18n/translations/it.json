@@ -14,5 +14,17 @@
   "button_takephoto": "scatta foto",
   "button_mirror": "specchia",
   "button_lock": "blocca",
-  "button_unlock": "sblocca"
+  "button_unlock": "sblocca",
+  "button_contrast": "contrasto",
+  "button_brightness": "luminosità",
+  "button_monochrome": "monocroma",
+  "use_text_as_image": "Testo",
+  "submit": "Invia",
+  "enter_text": "Testo",
+  "font": "Font",
+  "button_invertBackground": "sfondo",
+  "button_rotate": "ruotare",
+  "toast_brightness_to_max": "Usando la massima luminosità",
+  "toast_brightness_already_at_max": "Luminosità già al massimo",
+  "toast_brightness_to_default": "Luminosità ripristinata"
 }

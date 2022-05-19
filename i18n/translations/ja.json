@@ -18,5 +18,13 @@
   "button_unlock": "ロック解除",
   "button_contrast": "コントラスト",
   "button_brightness": "輝度",
-  "button_monochrome": "モノクロ"
+  "button_monochrome": "モノクロ",
+  "use_text_as_image": "文章",
+  "submit": "送信",
+  "font": "字体",
+  "button_invertBackground": "背景",
+  "button_rotate": "回転する",
+  "toast_brightness_to_max": "最大輝度を使用",
+  "toast_brightness_already_at_max": "明るさはすでに最大です",
+  "toast_brightness_to_default": "明るさが回復"
 }

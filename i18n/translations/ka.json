@@ -18,5 +18,13 @@
   "button_unlock": "განბლოკვა",
   "button_contrast": "კონტრასტი",
   "button_brightness": "სიკაშკაშე",
-  "button_monochrome": "მონოქრომული"
+  "button_monochrome": "მონოქრომული",
+  "use_text_as_image": "ტექსტი",
+  "submit": "გაგზავნა",
+  "font": "შრიფტი",
+  "button_invertBackground": "ფონი",
+  "button_rotate": "როტაცია",
+  "toast_brightness_to_max": "მაქსიმალური სიკაშკაშის გამოყენება",
+  "toast_brightness_already_at_max": "სიკაშკაშე უკვე მაქსიმუმზეა",
+  "toast_brightness_to_default": "აღდგენილია სიკაშკაშე"
 }
