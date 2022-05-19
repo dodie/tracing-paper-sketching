@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated, Dimensions, StyleSheet } from 'react-native';
 import {
+  GestureHandlerRootView,
   PanGestureHandler,
   PinchGestureHandler,
   RotationGestureHandler,
@@ -49,10 +50,6 @@ export default class TransformableImage extends React.Component {
       inputRange: [-100, 100],
       outputRange: ['-100rad', '100rad'],
     });
-    this._rotateY = this._rotate.interpolate({
-      inputRange: [0, 180],
-      outputRange: ['180deg', '360deg'],
-    });
     this._lastRotate = 0;
     this._onRotateGestureEvent = Animated.event(
       [{ nativeEvent: { rotation: this._rotate } }],
@@ -75,6 +72,7 @@ export default class TransformableImage extends React.Component {
       this._rotate.setValue(0);
     }
   };
+
   _onPinchHandlerStateChange = event => {
     if (event.nativeEvent.oldState === State.ACTIVE) {
       let newScale = this._lastScale * event.nativeEvent.scale
@@ -92,6 +90,7 @@ export default class TransformableImage extends React.Component {
 
     }
   };
+
   _onDragGestureStateChange = event => {
     if (event.nativeEvent.oldState === State.ACTIVE) {
       this._lastDrag.x += event.nativeEvent.translationX;
@@ -102,6 +101,12 @@ export default class TransformableImage extends React.Component {
       this._drag.y.setValue(0);
     }
   };
+
+  setRotate(rotation) {
+    this._lastRotate = rotation;
+    this._rotate.setOffset(rotation);
+    this._rotate.setValue(radrotationRot);
+  }
 
   render() {
     let transform = [
@@ -114,62 +119,65 @@ export default class TransformableImage extends React.Component {
     if (this.props.mirror) {
       transform.push({ scaleX: -1 });
     }
-    return (
-      <PanGestureHandler
-        enabled={!this.props.locked}
-        ref={this.dragRef}
-        onGestureEvent={this._onDragGestureEvent}
-        onHandlerStateChange={this._onDragGestureStateChange}
-        minDist={10}
-        minPointers={1}
-        maxPointers={1}
-        avgTouches>
-        <Animated.View style={styles.wrapper}>
-          <RotationGestureHandler
-            ref={this.rotationRef}
-            enabled={!this.props.locked}
-            simultaneousHandlers={this.pinchRef}
-            onGestureEvent={this._onRotateGestureEvent}
-            onHandlerStateChange={this._onRotateHandlerStateChange}>
-            <Animated.View style={styles.wrapper}>
-              <PinchGestureHandler
-                ref={this.pinchRef}
-                enabled={!this.props.locked}
-                simultaneousHandlers={this.rotationRef}
-                onGestureEvent={this._onPinchGestureEvent}
-                onHandlerStateChange={this._onPinchHandlerStateChange}>
-                <Animated.View style={styles.container} collapsable={false}>
-                  {this.props.image &&
-                    <Animated.Image
-                      style={[
-                        { width: this._width, height: this._height },
-                        { transform },
-                      ]}
-                      source={{ uri: this.props.image }}
-                    />
-                  }
 
-                  {this.props.text &&
-                    <Animated.Text 
-                      style={[
-                        { width: this._width,
-                          height: this._height,
-                          color: this.props.lightMode ? 'black' : 'white',
-                          textAlign: 'center',
-                          fontSize: 50,
-                          fontFamily: this.props.textFont
-                        },
-                        { transform },
-                      ]}>
-                      {this.props.text}
-                    </Animated.Text>
+    return (
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <PanGestureHandler
+          enabled={!this.props.locked}
+          ref={this.dragRef}
+          onGestureEvent={this._onDragGestureEvent}
+          onHandlerStateChange={this._onDragGestureStateChange}
+          minDist={10}
+          minPointers={1}
+          maxPointers={1}
+          avgTouches>
+          <Animated.View style={styles.wrapper}>
+            <RotationGestureHandler
+              ref={this.rotationRef}
+              enabled={!this.props.locked}
+              simultaneousHandlers={this.pinchRef}
+              onGestureEvent={this._onRotateGestureEvent}
+              onHandlerStateChange={this._onRotateHandlerStateChange}>
+              <Animated.View style={styles.wrapper}>
+                <PinchGestureHandler
+                  ref={this.pinchRef}
+                  enabled={!this.props.locked}
+                  simultaneousHandlers={this.rotationRef}
+                  onGestureEvent={this._onPinchGestureEvent}
+                  onHandlerStateChange={this._onPinchHandlerStateChange}>
+                  <Animated.View style={styles.container} collapsable={false}>
+                    {this.props.image &&
+                      <Animated.Image
+                        style={[
+                          { width: this._width, height: this._height },
+                          { transform },
+                        ]}
+                        source={{ uri: this.props.image }}
+                      />
                     }
-                  </Animated.View>
-              </PinchGestureHandler>
-            </Animated.View>
-          </RotationGestureHandler>
-        </Animated.View>
-      </PanGestureHandler>
+
+                    {this.props.text &&
+                      <Animated.Text 
+                        style={[
+                          { width: this._width,
+                            height: this._height,
+                            color: this.props.lightMode ? 'black' : 'white',
+                            textAlign: 'center',
+                            fontSize: 50,
+                            fontFamily: this.props.textFont
+                          },
+                          { transform },
+                        ]}>
+                        {this.props.text}
+                      </Animated.Text>
+                      }
+                    </Animated.View>
+                </PinchGestureHandler>
+              </Animated.View>
+            </RotationGestureHandler>
+          </Animated.View>
+        </PanGestureHandler>
+      </GestureHandlerRootView>
     );
   }
 }
@@ -183,4 +191,3 @@ const styles = Styles.create({
     justifyContent: 'center',
   }
 });
-

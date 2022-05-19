@@ -31,7 +31,8 @@ export default class App extends React.Component {
     invertBackground: false,
     brightness: false,
     isNewUser: true,
-    textAsImage: null
+    textAsImage: null,
+    rotationOffset: 0
   };
 
   constructor(props) {
@@ -52,7 +53,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage } = this.state;
+    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage, rotationOffset } = this.state;
 
     if (false && isNewUser) {
       return (
@@ -120,7 +121,17 @@ export default class App extends React.Component {
       } else {
         return (
           <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
-            <TrasformableImage mirror={mirror} text={text} image={image} width={width} height={height} locked={locked} brightness={brightness} lightMode={invertBackground} textFont={textFont} />
+            <TrasformableImage ref={component => {this.transformableImage = component}}
+              mirror={mirror}
+              text={text}
+              image={image}
+              width={width}
+              height={height}
+              locked={locked}
+              brightness={brightness}
+              lightMode={invertBackground}
+              textFont={textFont}
+              />
             {!locked &&
               <FloatingToolbar top={true} left={true}>
                 <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
@@ -130,7 +141,8 @@ export default class App extends React.Component {
               <FloatingToolbar left={true}>
                 <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />
                 <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />
-                <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />
+                <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="swap-horizontal-outline" lightMode={invertBackground} />
+                <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate_quarter")} textPosition="right" iconName="sync-outline" lightMode={invertBackground} />
               </FloatingToolbar>
             }
             <FloatingToolbar>
@@ -145,16 +157,27 @@ export default class App extends React.Component {
   }
   _brightness = async () => {
     if (!this.state.brightness) {
-      
+      const currentBrightness = await Brightness.getBrightnessAsync();
       await Brightness.setBrightnessAsync(1);
+      if (currentBrightness < 0.95) {
+        ToastAndroid.show(i18n.t('toast_brightness_to_max'), ToastAndroid.SHORT);
+      } else {
+        ToastAndroid.show(i18n.t('toast_brightness_already_at_max'), ToastAndroid.SHORT);
+      }
     } else {
       await Brightness.useSystemBrightnessAsync();
+      ToastAndroid.show(i18n.t('toast_brightness_to_default'), ToastAndroid.SHORT);
     }
     this.state.brightness ? this.setState({ brightness: false }) : this.setState({ brightness: true });
   }
 
   _mirror = () => {
     this.state.mirror ? this.setState({ mirror: false }) : this.setState({ mirror: true });
+  }
+
+  _rotateQuarter = () => {
+    this.setState({ rotationOffset: (this.state.rotationOffset + 1) % 4 });
+    this.transformableImage.setRotate(this.state.rotationOffset * 0.785398165);
   }
 
   _invertBackground = () => {
