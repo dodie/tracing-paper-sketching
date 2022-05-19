@@ -53,7 +53,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage, rotationOffset } = this.state;
+    let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage } = this.state;
 
     if (false && isNewUser) {
       return (
@@ -142,7 +142,7 @@ export default class App extends React.Component {
                 <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />
                 <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />
                 <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="swap-horizontal-outline" lightMode={invertBackground} />
-                <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate_quarter")} textPosition="right" iconName="sync-outline" lightMode={invertBackground} />
+                <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate")} textPosition="right" iconName="sync-outline" lightMode={invertBackground} />
               </FloatingToolbar>
             }
             <FloatingToolbar>
@@ -155,6 +155,7 @@ export default class App extends React.Component {
       }
     }
   }
+
   _brightness = async () => {
     if (!this.state.brightness) {
       const currentBrightness = await Brightness.getBrightnessAsync();
@@ -263,7 +264,7 @@ export default class App extends React.Component {
   }
 
   _resetImageAndText = () => {
-    this.setState({ image: null, brightness: false, mirror: false, text: null });
+    this.setState({ image: null, brightness: false, mirror: false, text: null, invertBackground: false });
   }
 
   _toHelp = () => {

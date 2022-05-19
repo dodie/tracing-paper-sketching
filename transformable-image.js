@@ -105,7 +105,7 @@ export default class TransformableImage extends React.Component {
   setRotate(rotation) {
     this._lastRotate = rotation;
     this._rotate.setOffset(rotation);
-    this._rotate.setValue(radrotationRot);
+    this._rotate.setValue(rotation);
   }
 
   render() {
