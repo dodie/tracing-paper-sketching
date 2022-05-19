@@ -21,9 +21,13 @@
   "button_takephoto": "take photo",
   "button_mirror": "mirror",
   "button_invertBackground": "background",
+  "button_rotate_quarter": "rotate",
   "button_lock": "lock",
   "button_unlock": "unlock",
   "button_contrast": "contrast",
   "button_brightness": "brightness",
-  "button_monochrome": "monochrome"
+  "button_monochrome": "monochrome",
+  "toast_brightness_to_max": "Using maximum brightness",
+  "toast_brightness_already_at_max": "Brightness already at maximum",
+  "toast_brightness_to_default": "Brightness restored"
 }

@@ -15,9 +15,13 @@
 	"button_takephoto": "Készíts egy képet!",
 	"button_mirror": "Tükörkép",
 	"button_invertBackground": "Háttér",
+	"button_rotate_quarter": "Elforgatás",
 	"button_lock": "Zárolás",
 	"button_unlock": "Feloldás",
 	"button_contrast": "Kontraszt",
 	"button_brightness": "Fényerő",
-	"button_monochrome": "Monochrome"
+	"button_monochrome": "Monochrome",
+	"toast_brightness_to_max": "Maximum fényerő",
+	"toast_brightness_already_at_max": "A fényerő már maximumon van",
+	"toast_brightness_to_default": "Fényerő visszaállítva"
 }

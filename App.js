@@ -32,7 +32,7 @@ export default class App extends React.Component {
     brightness: false,
     isNewUser: true,
     textAsImage: null,
-    rotationOffset: 0 // TODO: 0-3
+    rotationOffset: 0
   };
 
   constructor(props) {
@@ -121,7 +121,7 @@ export default class App extends React.Component {
       } else {
         return (
           <View style={{ flex: 1, backgroundColor: invertBackground ? 'white' : 'black' }}>
-            <TrasformableImage
+            <TrasformableImage ref={component => {this.transformableImage = component}}
               mirror={mirror}
               text={text}
               image={image}
@@ -131,7 +131,6 @@ export default class App extends React.Component {
               brightness={brightness}
               lightMode={invertBackground}
               textFont={textFont}
-              rotationOffset={rotationOffset * 1.57079633}
               />
             {!locked &&
               <FloatingToolbar top={true} left={true}>
@@ -142,8 +141,8 @@ export default class App extends React.Component {
               <FloatingToolbar left={true}>
                 <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />
                 <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />
-                <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />
-                <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate_quarter")} textPosition="right" iconName="md-repeat" lightMode={invertBackground} />
+                <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="swap-horizontal-outline" lightMode={invertBackground} />
+                <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate_quarter")} textPosition="right" iconName="sync-outline" lightMode={invertBackground} />
               </FloatingToolbar>
             }
             <FloatingToolbar>
@@ -178,6 +177,7 @@ export default class App extends React.Component {
 
   _rotateQuarter = () => {
     this.setState({ rotationOffset: (this.state.rotationOffset + 1) % 4 });
+    this.transformableImage.setRotate(this.state.rotationOffset * 0.785398165);
   }
 
   _invertBackground = () => {

@@ -48,7 +48,7 @@ export default class TransformableImage extends React.Component {
     this._rotate = new Animated.Value(0);
     this._rotateStr = this._rotate.interpolate({
       inputRange: [-100, 100],
-      outputRange: [(-100 + this.props.rotationOffset) + 'rad', (100 + this.props.rotationOffset) + 'rad'],
+      outputRange: ['-100rad', '100rad'],
     });
     this._lastRotate = 0;
     this._onRotateGestureEvent = Animated.event(
@@ -101,6 +101,12 @@ export default class TransformableImage extends React.Component {
       this._drag.y.setValue(0);
     }
   };
+
+  setRotate(rotation) {
+    this._lastRotate = rotation;
+    this._rotate.setOffset(rotation);
+    this._rotate.setValue(radrotationRot);
+  }
 
   render() {
     let transform = [
