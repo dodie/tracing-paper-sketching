@@ -38,7 +38,9 @@ function getMissing(translations, allKeys) {
                 if (missingTranslations[lang] === undefined) {
                     missingTranslations[lang] = {};
                 }
-                missingTranslations[lang][key] = en[key];
+                if (key != "onboarding_text" && key != "start") {
+		    missingTranslations[lang][key] = en[key];
+		}
             }
         });
     }
@@ -47,7 +49,7 @@ function getMissing(translations, allKeys) {
 
 const translations = getTranslations();
 const missingTranslations = getMissing(translations, getAllKeys(translations));
-console.log(missingTranslations);
+console.log(JSON.stringify(missingTranslations, null, 2));
 
 if (missingTranslations['en'] !== undefined) {
     console.log("Superfluous translations: " + Object.keys(missingTranslations['en']));
