@@ -1,6 +1,6 @@
 # Release Guide
 
-## Setup (only required only the first time)
+## Setup (only required the first time)
 
 ```
 npm install -g eas-cli
