@@ -38,9 +38,7 @@ function getMissing(translations, allKeys) {
                 if (missingTranslations[lang] === undefined) {
                     missingTranslations[lang] = {};
                 }
-                if (key != "onboarding_text" && key != "start") {
-		    missingTranslations[lang][key] = en[key];
-		}
+                missingTranslations[lang][key] = en[key];
             }
         });
     }

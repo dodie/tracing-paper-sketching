@@ -10,7 +10,7 @@ export default class ActionButtonwithText extends Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={ this.props.onPress }>
+      <TouchableOpacity onPress={ this.props.onPress } activeOpacity={0.7} >
         <View style={ styles.button }>
           <View style={ styles.contents }>
             <Ionicons name={ this.props.iconName } size={ 24 } color="#444" />

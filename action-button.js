@@ -18,10 +18,10 @@ export default class ActionButton extends Component {
 
 
     return (
-      <TouchableOpacity onPress={onPress}>
-        <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={onPress} activeOpacity={0.7} >
+        <View style={[styles.buttonContainer, {backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25, marginVertical: 5}]}>
             {text && textPosition === 'left' &&
-              <View style={{backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25}}>
+              <View>
                 <Text style={{paddingHorizontal: 10}}>{this.renderButtonText()}</Text>
               </View>
             }
@@ -29,7 +29,7 @@ export default class ActionButton extends Component {
                 <Ionicons name={iconName} size={24} color="#444" />
             </View>
             {text && textPosition === 'right' &&
-              <View style={{ backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25}}>
+              <View>
                 <Text style={{paddingHorizontal: 10}}>{this.renderButtonText()}</Text>
               </View>
             }
@@ -52,8 +52,7 @@ const styles = Styles.create({
   },
   buttonText: {
     color: 'gray',
-    fontSize: 22,
-    marginHorizontal: 10,
+    fontSize: 18,
     includeFontPadding: false,
   },
   button: {
@@ -65,7 +64,6 @@ const styles = Styles.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 3,
-    marginTop: 5,
   }
 });
 

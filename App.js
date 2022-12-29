@@ -15,6 +15,7 @@ import { StatusBar } from 'expo-status-bar';
 import Help from './help'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Camera as CameraComp } from 'expo-camera';
+import MainMenu from './src/menu/main-menu';
 
 export default class App extends React.Component {
   state = {
@@ -57,7 +58,7 @@ export default class App extends React.Component {
 
     if (false && isNewUser) {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: backgroundColor }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ textAlign: 'center', color: 'white' }}>
             {i18n.t('onboarding_text')}
           </Text>
@@ -67,6 +68,10 @@ export default class App extends React.Component {
     }
 
     if (help) {
+      /* TODO
+  "onboarding_text": "Hi there! 👋\n\nAre you ready to draw the perfect picture?\nIf yes, then pick an image and open it with the app.\nRotate, shrink or zoom to find the best alignment.\nLock the screen, put a paper over the display and start tracing.",
+  "start": "Let's draw!",
+      */
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <Help />
@@ -79,6 +84,13 @@ export default class App extends React.Component {
     }
 
     if (!image && !camera && !textAsImage) {
+      return <MainMenu items={[
+        { onPress: this._pickImage, iconName: "md-briefcase", text: i18n.t('pick_a_image') },
+        { onPress: this._openCamera, iconName: "md-camera", text: i18n.t('camera') },
+        { onPress: this._openTextAsImage, iconName: "md-language", text: i18n.t('use_text_as_image') },
+        { onPress: this._toHelp, iconName: "md-help-buoy", text: i18n.t('button_help') },
+      ]} />
+
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
