@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ActivityIndicator, ToastAndroid } from 'react-native';
+import { Text, View, ActivityIndicator, ToastAndroid, Linking } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
@@ -16,6 +16,8 @@ import Help from './help'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Camera as CameraComp } from 'expo-camera';
 import MainMenu from './src/menu/main-menu';
+
+const NEW_USER_STORAGE_KEY = "isNewUser";
 
 export default class App extends React.Component {
   state = {
@@ -44,7 +46,7 @@ export default class App extends React.Component {
 
   async init() {
     try {
-      const isNewUser = await AsyncStorage.getItem('isNewUser');
+      const isNewUser = await AsyncStorage.getItem(NEW_USER_STORAGE_KEY);
       if (isNewUser !== null) {
         this.setState({ isNewUser: false });
       }
@@ -56,25 +58,16 @@ export default class App extends React.Component {
   render() {
     let { image, text, textFont, width, height, locked, help, camera, photoLoader, mirror, invertBackground, brightness, isNewUser, textAsImage } = this.state;
 
-    if (false && isNewUser) {
-      return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ textAlign: 'center', color: 'white' }}>
-            {i18n.t('onboarding_text')}
-          </Text>
-          <ActionButtonWithText onPress={this._readyToUse} text={i18n.t("start")}/>
-        </View>
-      );
-    }
-
     if (help) {
-      /* TODO
-  "onboarding_text": "Hi there! 👋\n\nAre you ready to draw the perfect picture?\nIf yes, then pick an image and open it with the app.\nRotate, shrink or zoom to find the best alignment.\nLock the screen, put a paper over the display and start tracing.",
-  "start": "Let's draw!",
-      */
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
           <Help />
+          <View style={{ margin: 5 }}></View>
+          <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text={i18n.t('privacy_policy')} />
+
+          <View style={{ margin: 5 }}></View>
+          <ActionButtonWithText onPress={this._openLicenses} iconName="md-heart" text={i18n.t('licenses_credits')} />
+          
           <FloatingToolbar top={true} left={true}>
             <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
           </FloatingToolbar>
@@ -84,24 +77,15 @@ export default class App extends React.Component {
     }
 
     if (!image && !camera && !textAsImage) {
-      return <MainMenu items={[
-        { onPress: this._pickImage, iconName: "md-briefcase", text: i18n.t('pick_a_image') },
-        { onPress: this._openCamera, iconName: "md-camera", text: i18n.t('camera') },
-        { onPress: this._openTextAsImage, iconName: "md-language", text: i18n.t('use_text_as_image') },
-        { onPress: this._toHelp, iconName: "md-help-buoy", text: i18n.t('button_help') },
-      ]} />
-
-      return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
-          <ActionButtonWithText onPress={this._pickImage} iconName="md-briefcase" text={i18n.t('pick_a_image')} />
-          <ActionButtonWithText onPress={this._openCamera} iconName="md-camera" text={i18n.t('camera')} />
-          <ActionButtonWithText onPress={this._openTextAsImage} iconName="text" text={i18n.t('use_text_as_image')} />
-          <FloatingToolbar top={true}>
-            <ActionButton onPress={this._toHelp} text={i18n.t("button_help")} iconName="md-help" />
-          </FloatingToolbar>
-          <StatusBar hidden={true} />
-        </View>
-      );
+      return (<MainMenu
+        displayOnboarding={isNewUser}
+        dismissOnboarding={this._readyToUse}
+        items={[
+          { onPress: this._pickImage, iconName: "md-briefcase", text: i18n.t('pick_a_image') },
+          { onPress: this._openCamera, iconName: "md-camera", text: i18n.t('camera') },
+          { onPress: this._openTextAsImage, iconName: "md-language", text: i18n.t('use_text_as_image') },
+          { onPress: this._toHelp, iconName: "md-help-buoy", text: i18n.t('button_help') },
+        ]} />);
     } else if (!image && camera && !textAsImage) {
       return (
         <Camera ref={this.cameraRef}>
@@ -282,8 +266,16 @@ export default class App extends React.Component {
   }
 
   _readyToUse = () => {
-      this.setState({ isNewUser: false });
-      AsyncStorage.setItem('isNewUser');
-      this._toMain();
+    this.setState({ isNewUser: false });
+    AsyncStorage.setItem(NEW_USER_STORAGE_KEY, 'true');
+    this._toMain();
+  }
+
+  _openLegal = () => {
+    Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/legal.md");
+  }
+
+  _openLicenses = () => {
+    Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/licenses.md");
   }
 }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-
+import Help from '../../help'
+import ActionButtonWithText from '../../action-button-with-text';
 import i18n from '../../i18n/i18n';
 
 export default class MainMenu extends Component {
@@ -15,14 +16,8 @@ export default class MainMenu extends Component {
     const heroImageWidth = deviceWidth;
     const heroImageHeight = deviceWidth / 2;
     const containerMargin = 0;
-    /*
-    TODO:
-    how to communicate that you can scroll?
-    how to deal with narrow screens?
-
-    could also handle the onboading: no menuitems, just text and next on first opening (basically help screen without the credit buttons)
-    */
-    const { size, margin } = calcTileDimensions(deviceWidth - containerMargin * 2, 2)
+    const { size, margin } = calcTileDimensions(deviceWidth - containerMargin * 2, 2);
+    const { size: singleSize, margin: singleMargin } = calcTileDimensions(deviceWidth - containerMargin * 2, 1);
 
     return (
       <View style={{ flex:1, backgroundColor: '#dadada' }}>
@@ -31,11 +26,20 @@ export default class MainMenu extends Component {
         </View>
         <ScrollView style={{ flex:1 }} keyboardShouldPersistTaps="always">
           <View style={[styles.container, {margin: containerMargin, marginTop: heroImageHeight}]}>
-        
-          {
-          this.props.items.map(item => {
-            return <Item size={size} margin={margin} onPress={item.onPress} iconName={item.iconName} text={item.text} />
-          })
+
+          {this.props.displayOnboarding &&
+            <View style={[styles.item, { width: singleSize, height: singleSize, margin: singleMargin, borderRadius: 5 }]}>
+              <View style={{ padding: 20, backgroundColor: 'rgb(69, 99, 70)', borderRadius: 5 }}>
+                <Help />
+              </View>
+              <ActionButtonWithText onPress={this.props.dismissOnboarding} iconName="md-pencil" text={i18n.t("tracing_paper_help_dismiss")}/>
+            </View>
+          }
+
+          {!this.props.displayOnboarding &&
+            this.props.items.map(item => {
+              return <Item key={item.text} size={size} margin={margin} onPress={item.onPress} iconName={item.iconName} text={item.text} />
+            })
           }
           </View>
         </ScrollView>
