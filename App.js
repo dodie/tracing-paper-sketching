@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ActivityIndicator, ToastAndroid, Linking } from 'react-native';
+import { Text, View, ActivityIndicator, ToastAndroid, Linking, BackHandler, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import TrasformableImage from './transformable-image';
 import FloatingToolbar from './floating-toolbar';
@@ -42,6 +42,7 @@ export default class App extends React.Component {
     super(props);
     this.cameraRef = React.createRef();
     this.init();
+    this.handleBackButton = this.handleBackButton.bind(this);
   }
 
   async init() {
@@ -93,7 +94,7 @@ export default class App extends React.Component {
             {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
 
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._closeCamera} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
 
             <FloatingToolbar>
@@ -110,7 +111,7 @@ export default class App extends React.Component {
             <TextInputBox text={''} onSubmitPress={this._setText} />
             <FontDropDown textFont={textFont} onSelect={this._setFont} />
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._closeTextAsImage} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
           </View>
         );
@@ -130,7 +131,7 @@ export default class App extends React.Component {
               />
             {!locked &&
               <FloatingToolbar top={true} left={true}>
-                <ActionButton onPress={this._resetImageAndText} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
+                <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
               </FloatingToolbar>
             }
             {!locked &&
@@ -222,16 +223,8 @@ export default class App extends React.Component {
     }
   };
 
-  _closeCamera = () => {
-    this.setState({ camera: false });
-  }
-
   _openTextAsImage = () => {
     this.setState({ textAsImage: true });
-  }
-
-  _closeTextAsImage = () => {
-    this.setState({ textAsImage: false, text: null});
   }
 
   _setText = (textValue) => {
@@ -253,16 +246,12 @@ export default class App extends React.Component {
     });
   }
 
-  _resetImageAndText = () => {
-    this.setState({ image: null, brightness: false, mirror: false, text: null, invertBackground: false });
-  }
-
   _toHelp = () => {
     this.setState({ help: true });
   }
 
   _toMain = () => {
-    this.setState({ help: false });
+    this.setState({ help: false, camera: false, image: null, brightness: false, mirror: false, text: null, textAsImage: false, invertBackground: false });
   }
 
   _readyToUse = () => {
@@ -277,5 +266,34 @@ export default class App extends React.Component {
 
   _openLicenses = () => {
     Linking.openURL("https://raw.githubusercontent.com/dodie/tracing-paper-sketching/master/licenses.md");
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  handleBackButton() {
+    let { image, text, locked, camera, textAsImage, help } = this.state;
+
+    const isMainMenu = !image && !camera && !textAsImage && !help;
+    const isDrawing = (image || (text !== null && textAsImage)) && !camera
+    const isLocked = locked;
+
+    if (isDrawing && isLocked) {
+      ToastAndroid.show(i18n.t('toast_screen_locked'), ToastAndroid.SHORT);
+      return true;
+    }
+
+    if (isMainMenu) {
+      BackHandler.exitApp();
+      return true;
+    }
+
+    this._toMain();
+    return true;
   }
 }
