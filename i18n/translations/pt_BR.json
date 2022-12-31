@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Tracing Paper",
-  "tracing_paper_help": "Copie uma imagem da tela para um papel físico. Procure uma imagem como um modelo. Gire, diminua ou aumente para encontrar o alinhamento perfeito. Trave a tela, coloque um papel sobre o visor e começar a desenhar.",
+  "tracing_paper_help_promo": "Oi! 👋 Copie uma imagem da tela para um papel físico.",
+  "tracing_paper_help_step_1": "1. Procure uma imagem como um modelo",
+  "tracing_paper_help_step_2": "2. Gire, diminua ou aumente para encontrar o alinhamento perfeito",
+  "tracing_paper_help_step_3": "3. Trave a tela",
+  "tracing_paper_help_step_4": "4. Coloque um papel sobre o visor e começar a desenhar",
+  "tracing_paper_help_dismiss": "Vamos desenhar!",
   "privacy_policy": "Política de Privacidade",
   "licenses_credits": "Licenças, Créditos",
   "pick_a_image": "Selecione um imagem",

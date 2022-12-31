@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Kertas Jiplak",
-  "tracing_paper_help": "Salin gambar dari layar ke atas kertas. Cari gambar sebagai contoh. Putar, kecilkan, atau perbesar untuk mencari penjajaran terbaik. Kunci ponselmu, letakkan kertas diatas layar ponsel dan mulai menjiplak.",
+  "tracing_paper_help_promo": "Oi! 👋 Salin gambar dari layar ke atas kertas.",
+  "tracing_paper_help_step_1": "1. Cari gambar sebagai contoh",
+  "tracing_paper_help_step_2": "2. Putar, kecilkan, atau perbesar untuk mencari penjajaran terbaik",
+  "tracing_paper_help_step_3": "3. Kunci ponselmu",
+  "tracing_paper_help_step_4": "4. Letakkan kertas diatas layar ponsel dan mulai menjiplak",
+  "tracing_paper_help_dismiss": "Mari menggambar!",
   "privacy_policy": "Kebijakan Privasi",
   "licenses_credits": "Lisensi, Penghargaan",
   "pick_a_image": "PILIH GAMBAR",

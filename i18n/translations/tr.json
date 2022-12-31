@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Aydınger Kağıdı",
-  "tracing_paper_help": "Ekrandaki bir resmi bir kağıda kopyala. Şablon olarak kullanılabilecek bir resim bul. Mükemmel hizalamayı bulmak için döndür, daralt veya yakınlaştır. Ekranı kilitle, ekranın üzerine bir kağıt koy ve izlemeye başla.",
+  "tracing_paper_help_promo": "Merhaba! 👋 Ekrandaki bir resmi bir kağıda kopyala.",
+  "tracing_paper_help_step_1": "1. Şablon olarak kullanılabilecek bir resim bul",
+  "tracing_paper_help_step_2": "2. Mükemmel hizalamayı bulmak için döndür, daralt veya yakınlaştır",
+  "tracing_paper_help_step_3": "3. Ekranı kilitle",
+  "tracing_paper_help_step_4": "4. Ekranın üzerine bir kağıt koy ve izlemeye başla",
+  "tracing_paper_help_dismiss": "Hadi çizelim!",
   "privacy_policy": "Gizlilik Politikası",
   "licenses_credits": "Lisanslar, Krediler",
   "pick_a_image": "Resim seç",
