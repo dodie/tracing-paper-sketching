@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Papier-calque",
-  "tracing_paper_help": "Copier une image de l'écran sur un papier physique. Trouvez une image en tant que modèle. Faites pivoter, réduisez ou zoomez pour trouver l'alignement parfait. Verrouillez l'écran, placez un papier sur l'écran et commencez à tracer.",
+  "tracing_paper_help_promo": "Bonjour! 👋 Copier une image de l'écran sur un papier physique.",
+  "tracing_paper_help_step_1": "1. Trouvez une image en tant que modèle",
+  "tracing_paper_help_step_2": "2. Faites pivoter, réduisez ou zoomez pour trouver l'alignement parfait",
+  "tracing_paper_help_step_3": "3. Verrouillez l'écran",
+  "tracing_paper_help_step_4": "4. Placez un papier sur l'écran et commencez à tracer",
+  "tracing_paper_help_dismiss": "Dessinons!",
   "privacy_policy": "Politique de confidentialité",
   "licenses_credits": "Licenses, Credits",
   "pick_a_image": "CHOISISSEZ UNE IMAGE",

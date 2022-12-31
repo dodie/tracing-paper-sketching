@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Tracing Paper",
-  "tracing_paper_help": "Skopiuj obraz z ekranu na papier. Wybierz zdjęcie, które będzie szablonem. Obracaj, zmniejszaj lub powiększaj, aby znaleźć idealne położenie. Zablokuj ekran, połóż papier na wyświetlaczu i rozpocznij obrysowywanie.",
+  "tracing_paper_help_promo": "Hi there! 👋 Skopiuj obraz z ekranu na papier.",
+  "tracing_paper_help_step_1": "1. Wybierz zdjęcie, które będzie szablonem",
+  "tracing_paper_help_step_2": "2. Obracaj, zmniejszaj lub powiększaj, aby znaleźć idealne położenie",
+  "tracing_paper_help_step_3": "3. Zablokuj ekran",
+  "tracing_paper_help_step_4": "4. Połóż papier na wyświetlaczu i rozpocznij obrysowywanie",
+  "tracing_paper_help_dismiss": "Porysujmy!",
   "privacy_policy": "Polityka prywatności",
   "licenses_credits": "Licencje, Autorzy",
   "pick_a_image": "WYBIERZ ZDJĘCIE",

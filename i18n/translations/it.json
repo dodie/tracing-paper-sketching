@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Traccia immagine",
-  "tracing_paper_help": "Copia un'immagine dallo schermo su carta. Cerca un'immagine da usare come template. Ruota, comprimi o zoomma per trovare il giusto allineamento. Blocca lo schermo, posiziona un foglio di carta sullo schermo e copia l'immagine.",
+  "tracing_paper_help_promo": "Ciao! 👋 Copia un'immagine dallo schermo su carta.",
+  "tracing_paper_help_step_1": "1. Cerca un'immagine da usare come template",
+  "tracing_paper_help_step_2": "2. Ruota, comprimi o zoomma per trovare il giusto allineamento",
+  "tracing_paper_help_step_3": "3. Blocca lo schermo",
+  "tracing_paper_help_step_4": "4. Posiziona un foglio di carta sullo schermo e copia l'immagine",
+  "tracing_paper_help_dismiss": "Disegnamo!",
   "privacy_policy": "Condizioni sulla privacy",
   "licenses_credits": "Licenze, Crediti",
   "pick_a_image": "SCEGLI UN'IMMAGINE",

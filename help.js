@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import i18n from './i18n/i18n';
 
-// TODO: align localizations
 const Help = () => (
     <View style={{ alignItems: 'center', paddingHorizontal: 10 }}>
         <Text style={{fontWeight: 'bold', color: 'white', marginBottom: 5 }}>{i18n.t('tracing_paper')}</Text>

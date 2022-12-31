@@ -1,6 +1,11 @@
 {
     "tracing_paper": "papel de trazar",
-    "tracing_paper_help": "Copiar una imagen desde la pantalla al papel. Toma una imagen como plantilla. Gírala, encogela o agrandala hasta encontrar la alineación deseada. Bloquea la pantalla, pon papel sobre esta y comienza a dibujar.",
+    "tracing_paper_help_promo": "Hola! 👋 Copiar una imagen desde la pantalla al papel.",
+    "tracing_paper_help_step_1": "1. Toma una imagen como plantilla",
+    "tracing_paper_help_step_2": "2. Gírala, encogela o agrandala hasta encontrar la alineación deseada",
+    "tracing_paper_help_step_3": "3. Bloquea la pantalla",
+    "tracing_paper_help_step_4": "4. Pon papel sobre esta y comienza a dibujar",
+    "tracing_paper_help_dismiss": "Dibujemos!",
     "privacy_policy": "Política de Privacidad",
     "licenses_credits": "Licencias, Creditos",
     "pick_a_image": "SELECCIONA UNA IMAGEN",

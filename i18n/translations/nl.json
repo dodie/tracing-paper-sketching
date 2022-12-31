@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Tracing Paper",
-  "tracing_paper_help": "Kopieer een afbeelding van het scherm naar een fysiek papier. Zoek een afbeelding als sjabloon. Roteren, verkleinen of zoomen om de perfecte uitlijning te vinden. Vergrendel het scherm, plaats een papier op het scherm en start de tracering.",
+  "tracing_paper_help_promo": "Hoi! 👋 Kopieer een afbeelding van het scherm naar een fysiek papier.",
+  "tracing_paper_help_step_1": "1. Zoek een afbeelding als sjabloon",
+  "tracing_paper_help_step_2": "2. Roteren, verkleinen of zoomen om de perfecte uitlijning te vinden",
+  "tracing_paper_help_step_3": "3. Vergrendel het scherm",
+  "tracing_paper_help_step_4": "4. Plaats een papier op het scherm en start de tracering",
+  "tracing_paper_help_dismiss": "Laten we tekenen!",
   "privacy_policy": "Privacy Policy",
   "licenses_credits": "Licenses, Credits",
   "pick_a_image": "KIES EEN AFBEELDING",

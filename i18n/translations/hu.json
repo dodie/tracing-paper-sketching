@@ -1,6 +1,11 @@
 {
 	"tracing_paper": "Grafitpapír",
-	"tracing_paper_help": "Másolj képeket kijelzőről grafitpapírra!\n\nKeress egy képet sablonnak! Forgasd el, zsugoríts vagy közelíts a tökéletes beállításhoz! Zárd le a képernyőt, tedd a grafitpapírt a kijelzőre, és kezdd el a másolást!",
+	"tracing_paper_help_promo": "Helló! 👋 Készen állsz egy jó rajzolásra? Ezzel az appal át tudsz másolni egy képet grafitpapírra.",
+	"tracing_paper_help_step_1": "1. Nyiss meg egy képet sablonnak!",
+	"tracing_paper_help_step_2": "2. Forgasd el, zsugoríts vagy közelíts a tökéletes beállításhoz!",
+	"tracing_paper_help_step_3": "3. Zárd le a képernyőt!",
+	"tracing_paper_help_step_4": "4. Tedd a grafitpapírt a kijelzőre, és kezdd el a másolást!",
+	"tracing_paper_help_dismiss": "Rajzoljunk!",
 	"privacy_policy": "Adatvédelmi útmutató",
 	"licenses_credits": "Engedélyek, jóváhagyások",
 	"pick_a_image": "Válassz egy képet!",

@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Transparentpapier",
-  "tracing_paper_help": "Kopiere ein Bild vom Bildschirm auf ein physisches Blatt Papier. Suche ein Bild als Vorlage. Drehen, verkleinern oder zoome, um die perfekte Ausrichtung zu finden. Sperre den Bildschirm, lege ein Blatt Papier über das Display und beginne mit dem Abpausen.",
+  "tracing_paper_help_promo": "Hi! 👋 Kopiere ein Bild vom Bildschirm auf ein physisches Blatt Papier.",
+  "tracing_paper_help_step_1": "1. Suche ein Bild als Vorlage",
+  "tracing_paper_help_step_2": "2. Drehen, verkleinern oder zoome, um die perfekte Ausrichtung zu finden",
+  "tracing_paper_help_step_3": "3. Sperre den Bildschirm",
+  "tracing_paper_help_step_4": "4. Lege ein Blatt Papier über das Display und beginne mit dem Abpausen",
+  "tracing_paper_help_dismiss": "Lass uns malen!",
   "privacy_policy": "Datenschutz Bestimmungen",
   "licenses_credits": "Lizenzen, Credits",
   "pick_a_image": "Wähle ein Bild aus",

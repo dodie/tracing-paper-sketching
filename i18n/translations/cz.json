@@ -1,6 +1,11 @@
 {
   "tracing_paper": "Pauzovací papír",
-  "tracing_paper_help": "Zkopírujte obrázek z obrazovky na fyzický papír. Najděte obrázek jako šablonu. Otočením, zmenšením nebo zvětšením dosáhnete dokonalého zarovnání. Uzamkněte obrazovku, položte na displej papír a začněte sledovat.",
+  "tracing_paper_help_promo": "Ahoj! 👋 Zkopírujte obrázek z obrazovky na fyzický papír.",
+  "tracing_paper_help_step_1": "1. Najděte obrázek jako šablonu",
+  "tracing_paper_help_step_2": "2. Otočením, zmenšením nebo zvětšením dosáhnete dokonalého zarovnání",
+  "tracing_paper_help_step_3": "3. Uzamkněte obrazovku",
+  "tracing_paper_help_step_4": "4. Položte na displej papír a začněte sledovat",
+  "tracing_paper_help_dismiss": "Pojďme kreslit!",
   "privacy_policy": "Zásady ochrany osobních údajů",
   "licenses_credits": "Licence, úvěry",
   "pick_a_image": "VYBERTE OBRAZ",
