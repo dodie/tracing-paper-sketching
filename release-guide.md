@@ -1,5 +1,7 @@
 # Release Guide
 
+The build uses Expo's build server to create the APK.
+
 ## Setup (only required the first time)
 
 ```
@@ -31,8 +33,6 @@ More info:
 ```
 expo build:android
 ```
-
-It will use Expo's build server for the build, which requires authentication.
 
 To use a custom keystore:
 ```
