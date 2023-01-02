@@ -113,6 +113,7 @@ export default class App extends React.Component {
             <FloatingToolbar top={true} left={true}>
               <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
             </FloatingToolbar>
+            <StatusBar hidden={true} />
           </View>
         );
       } else {
