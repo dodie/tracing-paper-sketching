@@ -1,5 +1,5 @@
 {
-    "tracing_paper": "papel de trazar",
+    "tracing_paper": "Papel de trazar",
     "tracing_paper_help_promo": "Hola! 👋 Copiar una imagen desde la pantalla al papel.",
     "tracing_paper_help_step_1": "1. Toma una imagen como plantilla",
     "tracing_paper_help_step_2": "2. Gírala, encogela o agrandala hasta encontrar la alineación deseada",
@@ -8,8 +8,9 @@
     "tracing_paper_help_dismiss": "Dibujemos!",
     "privacy_policy": "Política de Privacidad",
     "licenses_credits": "Licencias, Creditos",
-    "pick_a_image": "SELECCIONA UNA IMAGEN",
-    "camera": "CAMARA",
+    "photos": "Fotos",
+    "contours": "Contornos",
+    "camera": "Camara",
     "enter_text": "Texto",
     "toast_screen_locked": "Pantalla bloqueada",
     "toast_screen_unlocked": "Pantalla desbloqueada",

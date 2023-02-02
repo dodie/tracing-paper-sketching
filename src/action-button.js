@@ -19,7 +19,7 @@ export default class ActionButton extends Component {
 
     return (
       <TouchableOpacity onPress={onPress} activeOpacity={0.7} >
-        <View style={[styles.buttonContainer, {backgroundColor: lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)', borderRadius: 25, marginVertical: 5}]}>
+        <View style={[styles.buttonContainer, {backgroundColor: lightMode === undefined ? 'rgba(36, 53, 36, 0.8)' : (lightMode ? 'rgba(232, 232, 232, 0.8)' : 'rgba(52, 52, 52, 0.8)'), borderRadius: 25, marginVertical: 5}]}>
             {text && textPosition === 'left' &&
               <View>
                 <Text style={{paddingHorizontal: 10}}>{this.renderButtonText()}</Text>

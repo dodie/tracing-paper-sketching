@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Dimensions, StyleSheet } from 'react-native';
+import { Animated, Dimensions, StyleSheet, ToastAndroid } from 'react-native';
 import {
   GestureHandlerRootView,
   PanGestureHandler,
@@ -8,6 +8,7 @@ import {
   State,
 } from 'react-native-gesture-handler';
 import Styles from './styles'
+import Svg, { Path } from "react-native-svg"
 
 export default class TransformableImage extends React.Component {
   panRef = React.createRef();
@@ -114,11 +115,15 @@ export default class TransformableImage extends React.Component {
       { translateX: this._drag.x },
       { translateY: this._drag.y },
       { scale: this._scale },
-      { rotate: this._rotateStr },
+      { rotate: this._rotateStr }
     ];
+
     if (this.props.mirror) {
       transform.push({ scaleX: -1 });
     }
+
+    let AnimatedPath = Animated.createAnimatedComponent(Path);
+    let AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -146,6 +151,23 @@ export default class TransformableImage extends React.Component {
                   onGestureEvent={this._onPinchGestureEvent}
                   onHandlerStateChange={this._onPinchHandlerStateChange}>
                   <Animated.View style={styles.container} collapsable={false}>
+                    {this.props.svg &&
+                      <AnimatedSvg style={[{ transform }]} viewBox={this.props.svg.viewBox} height={Dimensions.get('window').height} width={Dimensions.get('window').width}>
+                      {
+                        this.props.svg.path.map(path => {
+                          return <AnimatedPath key={path} id={path} 
+                            fill="none"
+                            stroke={this.props.lightMode ? "#000" : "#FFF"}
+                            strokeWidth={4}
+                            strokeLinecap="square"
+                            strokeLinejoin="bevel"
+                            d={path}
+                          />
+                        })
+                      }
+                      </AnimatedSvg>
+                    }
+
                     {this.props.image &&
                       <Animated.Image
                         style={[
@@ -169,8 +191,8 @@ export default class TransformableImage extends React.Component {
                         ]}>
                         {this.props.text}
                       </Animated.Text>
-                      }
-                    </Animated.View>
+                    }
+                  </Animated.View>
                 </PinchGestureHandler>
               </Animated.View>
             </RotationGestureHandler>

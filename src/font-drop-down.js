@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Styles from './styles';
-import i18n from './i18n/i18n';
+import i18n from '../i18n/i18n';
 
 export default class FontDropDown extends Component {
   constructor(props) {
@@ -56,7 +56,8 @@ const styles = Styles.create({
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#FFF',
-    fontSize: 60
+    fontSize: 60,
+    marginBottom: 10
   },
   picker: {
     width: 300,
