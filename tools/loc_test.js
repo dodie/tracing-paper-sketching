@@ -1,3 +1,5 @@
+// CLI tool to find missing localization keys.
+
 const fs = require('fs');
 const { exit } = require('process');
 

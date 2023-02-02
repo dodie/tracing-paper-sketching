@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import i18n from './i18n/i18n';
+import i18n from '../i18n/i18n';
 
 const Help = () => (
     <View style={{ alignItems: 'center', paddingHorizontal: 10 }}>

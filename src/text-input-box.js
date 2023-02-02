@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import ActionButtonWithText from './action-button-with-text';
 import Styles from './styles';
-import i18n from './i18n/i18n';
+import i18n from '../i18n/i18n';
 
 export default class TextInputBox extends Component {
   constructor(props) {
