@@ -27,8 +27,15 @@
     },
     "android": {
       "package": "com.advancedweb.tracing_paper_sketching",
-      "permissions": [ "CAMERA" ],
-      "versionCode": 16
+      "permissions": [
+        "CAMERA"
+      ],
+      "versionCode": 17
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4a025d90-d979-11e9-aec5-9b36aac8ef25"
+      }
     }
   }
 }

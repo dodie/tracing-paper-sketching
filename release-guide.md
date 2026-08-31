@@ -36,7 +36,7 @@ This is an update to an existing published application, so the production AAB mu
 eas credentials --platform android
 ```
 
-Select the `production` profile and verify that the configured keystore is the existing upload keystore. Do not generate or replace the keystore unless intentionally performing Google Play's upload-key reset procedure.
+Select the `production` profile and verify that the configured keystore is the existing upload keystore (select "Keystore: Manage everything needed to build your project" then "Download existing keystore", then just exit the tool). Do not generate or replace the keystore unless intentionally performing Google Play's upload-key reset procedure.
 
 Note: the old `expo fetch:android:keystore` and `expo build:android` commands belong to the retired Classic Build service and must not be used.
 
@@ -63,6 +63,8 @@ eas build --platform android --profile production
 Do not configure `android.buildType` as `apk` for the production profile. APK builds are useful for direct device installation but cannot be used for this Google Play release.
 
 When the build finishes, download the `.aab` from the EAS build page. Confirm that the build shows the intended package ID, version, and version code.
+
+The build may emit "Detected that your app uses Expo Go for development, this is not recommended when building production apps.". This is most likely not a huge issue, it just means that I did not test the same stuff that will go to prod as I use this expo app that only loads the JS. For prod builds a native AAB will be assembled, which is different. However, so far I did not bump into problems with this.
 
 ## Manual Google Play upload
 
