@@ -7,14 +7,15 @@ import ActionButton from './src/action-button';
 import ActionButtonWithText from './src/action-button-with-text';
 import TextInputBox from './src/text-input-box';
 import FontDropDown from './src/font-drop-down'
-import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
+import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import i18n from './i18n/i18n';
 import Camera from './src/camera';
 import * as Brightness from 'expo-brightness';
 import { StatusBar } from 'expo-status-bar';
 import Help from './src/help'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Camera as CameraComp } from 'expo-camera';
+import { Camera as CameraPermissions } from 'expo-camera';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MainMenu from './src/main-menu';
 import Svgs from './src/svg';
 import Grid from './src/grid'
@@ -31,7 +32,7 @@ const SCREEN = {
   DRAWING: "drawing"
 };
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     screen: SCREEN.MAIN,
     isNewUser: true,
@@ -78,11 +79,11 @@ export default class App extends React.Component {
         displayOnboarding={isNewUser}
         dismissOnboarding={this._readyToUse}
         items={[
-          { onPress: this._pickImage, iconName: "md-briefcase", text: i18n.t('photos') },
-          { onPress: this._openCamera, iconName: "md-camera", text: i18n.t('camera') },
-      //    { onPress: this._open(SCREEN.SVG_SELECTOR), iconName: "md-bug", text: i18n.t('contours') },
-          { onPress: this._open(SCREEN.TEXT_SELECTOR), iconName: "md-language", text: i18n.t('use_text_as_image') },
-          { onPress: this._open(SCREEN.HELP), iconName: "md-help-buoy", text: i18n.t('button_help') },
+          { onPress: this._pickImage, iconName: "briefcase", text: i18n.t('photos') },
+          { onPress: this._openCamera, iconName: "camera", text: i18n.t('camera') },
+      //    { onPress: this._open(SCREEN.SVG_SELECTOR), iconName: "bug", text: i18n.t('contours') },
+          { onPress: this._open(SCREEN.TEXT_SELECTOR), iconName: "language", text: i18n.t('use_text_as_image') },
+          { onPress: this._open(SCREEN.HELP), iconName: "help-buoy", text: i18n.t('button_help') },
         ]} />);
     }
 
@@ -103,20 +104,20 @@ export default class App extends React.Component {
             />
           {!locked &&
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" lightMode={invertBackground} />
+              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="arrow-back" lightMode={invertBackground} />
             </FloatingToolbar>
           }
           {!locked &&
             <FloatingToolbar left={true}>
-              <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="md-sunny" lightMode={invertBackground} />
-              <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="md-bulb-outline" lightMode={invertBackground} />
+              <ActionButton onPress={this._brightness} text={i18n.t("button_brightness")} textPosition="right" iconName="sunny" lightMode={invertBackground} />
+              <ActionButton onPress={this._invertBackground} text={i18n.t("button_invertBackground")} textPosition="right" iconName="bulb-outline" lightMode={invertBackground} />
               <ActionButton onPress={this._mirror} text={i18n.t("button_mirror")} textPosition="right" iconName="swap-horizontal-outline" lightMode={invertBackground} />
               <ActionButton onPress={this._rotateQuarter} text={i18n.t("button_rotate")} textPosition="right" iconName="sync-outline" lightMode={invertBackground} />
             </FloatingToolbar>
           }
           <FloatingToolbar>
-            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="md-lock-open" lightMode={invertBackground} />}
-            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="md-lock-closed" lightMode={invertBackground} />}
+            {!locked && <ActionButton onPress={this._lock} text={i18n.t("button_lock")} iconName="lock-open" lightMode={invertBackground} />}
+            {locked && <ActionButton onPress={this._unlock} text={i18n.t("button_unlock")} iconName="lock-closed" lightMode={invertBackground} />}
           </FloatingToolbar>
           <StatusBar hidden={true} />
         </View>
@@ -160,7 +161,7 @@ export default class App extends React.Component {
         </ScrollView>
           
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="arrow-back" />
           </FloatingToolbar>
           <StatusBar hidden={true} />
         </View>
@@ -174,11 +175,11 @@ export default class App extends React.Component {
             {photoLoader && <ActivityIndicator size="large" color="#ffffff" />}
 
             <FloatingToolbar top={true} left={true}>
-              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+              <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="arrow-back" />
             </FloatingToolbar>
 
             <FloatingToolbar>
-              <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="md-camera" />
+              <ActionButton onPress={this._snap} text={i18n.t("button_takephoto")} iconName="camera" />
             </FloatingToolbar>
             <StatusBar hidden={true} />
           </View>
@@ -192,7 +193,7 @@ export default class App extends React.Component {
           <FontDropDown textFont={textFont} onSelect={this._setFont} />
           <TextInputBox text={''} onSubmitPress={this._setText} />
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="arrow-back" />
           </FloatingToolbar>
           <StatusBar hidden={true} />
         </View>
@@ -204,13 +205,13 @@ export default class App extends React.Component {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgb(59, 87, 59)' }}>
           <Help />
           <View style={{ margin: 5 }}></View>
-          <ActionButtonWithText onPress={this._openLegal} iconName="md-book" text={i18n.t('privacy_policy')} />
+          <ActionButtonWithText onPress={this._openLegal} iconName="book" text={i18n.t('privacy_policy')} />
 
           <View style={{ margin: 5 }}></View>
-          <ActionButtonWithText onPress={this._openLicenses} iconName="md-heart" text={i18n.t('licenses_credits')} />
+          <ActionButtonWithText onPress={this._openLicenses} iconName="heart" text={i18n.t('licenses_credits')} />
           
           <FloatingToolbar top={true} left={true}>
-            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="md-arrow-back" />
+            <ActionButton onPress={this._toMain} text={i18n.t("button_back")} textPosition="right" iconName="arrow-back" />
           </FloatingToolbar>
           <StatusBar hidden={true} />
         </View>
@@ -251,7 +252,7 @@ export default class App extends React.Component {
     this.setState({ locked: true }, () => {
       ToastAndroid.show(i18n.t('toast_screen_locked'), ToastAndroid.SHORT);
     });
-    activateKeepAwake();
+    activateKeepAwakeAsync();
   }
 
   _unlock = () => {
@@ -263,20 +264,26 @@ export default class App extends React.Component {
 
   _pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync();
-    if (!result.cancelled) {
-      this.setState({ screen: SCREEN.DRAWING, image: result.uri, width: result.width, height: result.height }, () => {
+    if (!result.canceled && result.assets?.length) {
+      const image = result.assets[0];
+      this.setState({ screen: SCREEN.DRAWING, image: image.uri, width: image.width, height: image.height }, () => {
         ToastAndroid.show(i18n.t('toast_image_loaded'), ToastAndroid.SHORT);
       });
     }
   }
 
   _openCamera = async () => {
-    const { status } = await CameraComp.requestCameraPermissionsAsync();
-    this.setState({ screen: status === 'granted' ? SCREEN.CAMERA_SELECTOR : SCREEN.MAIN}, () => {
-      if (this.state.screen !== SCREEN.CAMERA_SELECTOR) {
-        ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);
-      }
-    });
+    try {
+      const { status } = await CameraPermissions.requestCameraPermissionsAsync();
+      this.setState({ screen: status === 'granted' ? SCREEN.CAMERA_SELECTOR : SCREEN.MAIN}, () => {
+        if (this.state.screen !== SCREEN.CAMERA_SELECTOR) {
+          ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);
+        }
+      });
+    } catch (error) {
+      console.error('Unable to request camera permission', error);
+      ToastAndroid.show(i18n.t('toast_no_access_to_camera'), ToastAndroid.SHORT);
+    }
   }
 
   _snap = async () => {
@@ -328,6 +335,7 @@ export default class App extends React.Component {
   }
   
   _toMain = () => {
+    deactivateKeepAwake();
     this.setState({ screen: SCREEN.MAIN, image: null, svg: null, brightness: false, mirror: false, text: null, invertBackground: false });
   }
 
@@ -346,11 +354,13 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+    deactivateKeepAwake();
+    this.backHandlerSubscription = BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+    deactivateKeepAwake();
+    this.backHandlerSubscription?.remove();
   }
 
   handleBackButton() {
@@ -369,4 +379,12 @@ export default class App extends React.Component {
     this._toMain();
     return true;
   }
+}
+
+export default function Root() {
+  return (
+    <SafeAreaProvider>
+      <App />
+    </SafeAreaProvider>
+  );
 }

@@ -54,8 +54,7 @@ i18n.translations = {
   tr: tr,
   kn : kn
 };
-i18n.locale = Localization.locale;
+i18n.locale = Localization.getLocales()[0]?.languageTag || "en-EN";
 i18n.defaultLocale = "en-EN";
 
 export default i18n;
-

@@ -2,13 +2,12 @@
   "expo": {
     "name": "Tracing Paper Sketching",
     "slug": "tracing-paper-sketching",
-    "privacy": "public",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -22,12 +21,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "package": "com.advancedweb.tracing_paper_sketching",
-      "permissions": [ "CAMERA", "READ_EXTERNAL_STORAGE" ],
+      "permissions": [ "CAMERA" ],
       "versionCode": 16
     }
   }

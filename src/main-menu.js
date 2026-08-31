@@ -25,14 +25,14 @@ export default class MainMenu extends Component {
           <Image style={{ height: heroImageHeight, width: heroImageWidth, position: 'absolute', top: 0, left: 0 }} source={require('../assets/promo_landscape.png')} />
         </View>
         <ScrollView style={{ flex:1 }} keyboardShouldPersistTaps="always">
-          <View style={[Grid.styles.container, {margin: 0, marginTop: heroImageHeight}]}>
+          <View style={[Grid.styles.container, {margin: 0, marginTop: heroImageHeight + (this.props.displayOnboarding ? 10 : 0)}]}>
 
           {this.props.displayOnboarding &&
             <View style={[Grid.styles.item, { width: singleSize, height: singleSize, margin: singleMargin, borderRadius: 5 }]}>
               <View style={{ padding: 20, backgroundColor: 'rgb(69, 99, 70)', borderRadius: 5 }}>
                 <Help />
               </View>
-              <ActionButtonWithText onPress={this.props.dismissOnboarding} iconName="md-pencil" text={i18n.t("tracing_paper_help_dismiss")}/>
+              <ActionButtonWithText onPress={this.props.dismissOnboarding} iconName="pencil" text={i18n.t("tracing_paper_help_dismiss")}/>
             </View>
           }
 
